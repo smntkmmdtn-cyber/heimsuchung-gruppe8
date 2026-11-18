@@ -5,193 +5,329 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Die unberechtigte Eigenbesitzerin – Mindmap</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..700;1,400..700&family=Public+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400..700;1,7..72,400..600&family=Schibsted+Grotesk:wght@400..700&display=swap" rel="stylesheet">
+
 <style>
-:root{--bg:#F3EDE3;--paper:#FBF8F3;--ink:#1C1916;--mut:#5F574E;--line:#D8CEC0;--acc:#9A4128;--soft:#EDE4D6}
-*{box-sizing:border-box}
-html,body{margin:0;height:100%;background:var(--bg);color:var(--ink);font-family:'Public Sans',Arial,sans-serif;overflow:hidden}
-#app{display:flex;flex-direction:column;height:100vh;height:100dvh}
-header{display:flex;align-items:center;gap:8px;padding:8px 12px;background:var(--ink);color:#F3EDE3;flex:none;flex-wrap:wrap}
-header h1{font:600 17px/1.2 'EB Garamond',Georgia,serif;margin:0 auto 0 0;letter-spacing:.2px}
-header h1 small{font:400 12px 'Public Sans',Arial,sans-serif;color:#BDB3A6;margin-left:6px}
-.btn{font:600 13px 'Public Sans',Arial,sans-serif;color:#F3EDE3;background:#2E2924;border:1px solid #4A433B;border-radius:8px;padding:7px 11px;cursor:pointer}
-.btn:hover{background:#3A342E}.btn.on{background:#E59A78;color:#1C1916;border-color:#E59A78}
-.btn:focus-visible,.kid:focus-visible,.nb:focus-visible{outline:3px solid #E59A78;outline-offset:2px}
-main{flex:1;display:flex;min-height:0;position:relative}
-#stage{flex:1;position:relative;min-width:0}
-svg{width:100%;height:100%;display:block;touch-action:manipulation;user-select:none}
-.node{cursor:pointer}
-.node rect{transition:stroke-width .2s}
-.node text{pointer-events:none}
-.hint{position:absolute;left:12px;bottom:10px;font-size:12px;color:var(--mut);background:#F3EDE3cc;padding:4px 8px;border-radius:6px;pointer-events:none}
-#panel{width:420px;flex:none;background:var(--paper);border-left:1px solid var(--line);overflow-y:auto;-webkit-overflow-scrolling:touch;padding:18px 20px 60px}
-#panel .crumb{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--acc);font-weight:700;margin:0 0 4px}
-#panel h2{font:600 28px/1.15 'EB Garamond',Georgia,serif;margin:0 0 12px}
-#panel p{margin:0 0 10px;line-height:1.55;font-size:15.5px}
-#panel .tag{display:inline-block;font-size:11.5px;font-weight:700;padding:2px 8px;border-radius:20px;color:#fff;margin-left:6px;vertical-align:2px}
-.box{border-radius:10px;padding:10px 12px;margin:12px 0;font-size:15px;line-height:1.5}
-.box h4{margin:0 0 5px;font-size:12px;letter-spacing:.07em;text-transform:uppercase}
-.flag{background:#FFF1D6;border:1px solid #E8C27A}.flag h4{color:#8A5A00}
-.deut{background:#F1E6DC;border-left:4px solid var(--acc)}.deut h4{color:var(--acc)}
-.bel{background:var(--soft)}.bel h4{color:var(--mut)}.bel ul{margin:0;padding-left:18px}.bel li{margin:3px 0}
-.pro{background:#E5EFE5;border:1px solid #B9D2B9}.pro h4{color:#2F5E33}
-.con{background:#F6E3DF;border:1px solid #E2BBB2}.con h4{color:#8A2E1E}
-.urt{background:var(--ink);color:#F3EDE3}.urt h4{color:#E59A78}
-.notes{background:#1C1916;color:#F3EDE3;border-radius:10px;padding:12px 14px;margin:14px 0}
-.notes h4{color:#E59A78;margin:0 0 6px;font-size:12px;letter-spacing:.07em;text-transform:uppercase}
-.notes ul{margin:0;padding-left:18px}.notes li{margin:5px 0;line-height:1.45}.notes b{color:#fff}
-.kids{display:flex;flex-direction:column;gap:6px;margin:10px 0}
-.kid{text-align:left;font:600 14.5px 'Public Sans',Arial,sans-serif;background:#fff;border:1px solid var(--line);border-left:5px solid var(--c);border-radius:8px;padding:9px 11px;cursor:pointer;color:var(--ink)}
-.kid:hover{background:#F7F1E8}
-.pnav{display:flex;justify-content:space-between;gap:8px;margin-top:18px}
-.pnav button{flex:1;font:600 13px 'Public Sans',Arial,sans-serif;background:var(--soft);border:1px solid var(--line);border-radius:8px;padding:9px;cursor:pointer;color:var(--ink)}
-.legend{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0}
-.nb{font:600 13px 'Public Sans',Arial,sans-serif;border:none;border-radius:20px;padding:6px 11px;color:#fff;cursor:pointer}
-#close{display:none}
-footer{font-size:11.5px;color:var(--mut);margin-top:26px;border-top:1px solid var(--line);padding-top:8px}
-@media (max-width:820px){
- main{flex-direction:column}
- #panel{width:auto;height:48%;border-left:none;border-top:1px solid var(--line);padding:14px 16px 50px}
- body.collapsed #panel{height:56px;overflow:hidden}
- #close{display:inline-block}
- header h1 small{display:none}
- .hint{display:none}
+:root{
+ --paper:#EDF0EA; --sheet:#FBFCF9; --ink:#13263A; --ink2:#41505E; --rule:#CDD5CC;
+ --pine:#2F5D4E; --lake:#2D6A88; --stamp:#A3262E; --sand:#8A6A2F;
+ --ui:"Schibsted Grotesk",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+ --read:"Literata",Georgia,"Times New Roman",serif;
 }
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html,body{margin:0;height:100%;background:var(--paper);color:var(--ink);font-family:var(--ui);overflow:hidden;-webkit-font-smoothing:antialiased}
+button{font-family:var(--ui)}
+#app{display:flex;flex-direction:column;height:100vh;height:100dvh}
+
+/* header */
+header{flex:none;display:flex;align-items:center;gap:14px;padding:10px 16px;background:var(--sheet);border-bottom:1px solid var(--rule)}
+.brand{margin-right:auto;min-width:0}
+.brand b{display:block;font:600 19px/1.15 var(--read);letter-spacing:-.005em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.brand span{display:block;font-size:12.5px;color:var(--ink2);margin-top:1px}
+.seg{display:flex;background:var(--paper);border:1px solid var(--rule);border-radius:9px;padding:3px}
+.seg button{border:0;background:transparent;color:var(--ink2);font-weight:600;font-size:13.5px;padding:6px 12px;border-radius:6px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--ink);color:#fff}
+.tools{display:flex;gap:6px}
+.ib{border:1px solid var(--rule);background:var(--sheet);color:var(--ink);font-weight:600;font-size:13.5px;height:34px;min-width:34px;padding:0 11px;border-radius:8px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:6px}
+.ib:hover{background:#F1F4EF}
+.ib[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
+.ib svg{width:16px;height:16px}
+button:focus-visible,.node:focus-visible{outline:3px solid var(--lake);outline-offset:2px}
+
+
+main{flex:1;display:flex;min-height:0}
+#stage{flex:1;position:relative;min-width:0;overflow:hidden}
+#svg{position:absolute;inset:0;width:100%;height:100%;display:block;user-select:none;-webkit-user-select:none}
+.node{cursor:pointer;outline:none}
+.node .bg{transition:stroke-width .18s ease,fill .18s ease}
+.node:hover .bg{fill:#fff}
+.node text{pointer-events:none}
+.layer{transition:opacity .35s ease}
+.gone{opacity:0;pointer-events:none}
+.faint{opacity:.22}
+.legend{position:absolute;left:14px;bottom:12px;display:flex;flex-wrap:wrap;gap:4px 14px;font-size:12.5px;color:var(--ink2);background:rgba(237,240,234,.85);padding:6px 10px;border-radius:8px;max-width:calc(100% - 28px)}
+.legend i{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:6px;vertical-align:0}
+
+/* panel */
+#panel{flex:none;width:440px;background:var(--sheet);border-left:1px solid var(--rule);overflow-y:auto;-webkit-overflow-scrolling:touch}
+.pi{padding:24px 28px 56px;max-width:62ch}
+.pi .crumb{font:600 13px/1.35 var(--ui);margin:0 0 8px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.pill{font-size:12px;font-weight:600;border:1.5px solid currentColor;border-radius:20px;padding:1px 8px}
+.pi h2{font:600 30px/1.12 var(--read);letter-spacing:-.01em;margin:0 0 14px}
+.pi p{font:400 16.5px/1.62 var(--read);margin:0 0 12px}
+.pi ul.dots{margin:0 0 12px;padding:0;list-style:none}
+.pi ul.dots li{font:400 16.5px/1.55 var(--read);padding-left:18px;position:relative;margin:0 0 7px}
+.pi ul.dots li:before{content:"";position:absolute;left:3px;top:.72em;width:6px;height:6px;border-radius:50%;background:var(--c,var(--ink))}
+.pi .lbl{font:600 13px/1.3 var(--ui);margin:0 0 6px;color:var(--ink2);font-style:normal}
+.blk{margin:18px 0}
+.deut{border-left:3px solid var(--c,var(--ink));padding:2px 0 2px 14px}
+.pi .deut p:not(.lbl){font-style:italic}
+.bel ol{margin:0;padding-left:20px;font:400 14.5px/1.5 var(--read);color:var(--ink2)}
+.bel li{margin:0 0 5px}
+.flag{border:1.5px dashed var(--stamp);border-radius:8px;padding:10px 12px;color:#5E1419;background:#FBF1F1}
+.pi .flag .lbl{color:var(--stamp)}
+.pi .flag p{font-size:15px;margin:0}
+.pc{display:grid;grid-template-columns:1fr;gap:10px}
+.pc>div{border-radius:8px;padding:11px 13px}
+.pc .pro{background:#E8F0EC}.pi .pc .pro .lbl{color:var(--pine)}
+.pc .con{background:#F7EAEA}.pi .pc .con .lbl{color:var(--stamp)}
+.pi .pc p{font-size:15.5px;margin:0}
+.verdict{background:var(--ink);color:#F2F5F1;border-radius:8px;padding:13px 15px}
+.pi .verdict .lbl{color:#A9C7D6}.pi .verdict p{margin:0}
+.notes{background:#13263A;color:#EEF2EE;border-radius:10px;padding:14px 16px}
+.pi .notes .lbl{color:#A9C7D6}
+.notes ul{margin:0;padding-left:18px}.notes li{font:400 15px/1.5 var(--ui);margin:0 0 7px}.notes b{color:#fff}
+.kids{display:flex;flex-direction:column;gap:6px;margin:16px 0}
+.kid{display:flex;align-items:baseline;gap:10px;text-align:left;font:600 15px/1.3 var(--ui);color:var(--ink);background:transparent;border:1px solid var(--rule);border-radius:8px;padding:10px 12px;cursor:pointer}
+.kid:hover{background:#F1F4EF;border-color:var(--c)}
+.kid small{font:500 12.5px var(--ui);color:var(--ink2);margin-left:auto;white-space:nowrap}
+.kid i{flex:none;width:8px;height:8px;border-radius:50%;background:var(--c);transform:translateY(-1px)}
+.branches{display:grid;grid-template-columns:1fr;gap:6px;margin:14px 0}
+.brb{display:flex;gap:12px;align-items:center;text-align:left;border:1px solid var(--rule);background:transparent;border-radius:8px;padding:9px 12px;cursor:pointer;color:var(--ink)}
+.brb:hover{background:#F1F4EF}
+.brb em{flex:none;font:700 13px var(--ui);font-style:normal;color:#fff;background:var(--c);width:24px;height:24px;border-radius:50%;display:grid;place-items:center}
+.brb span{font:600 15px/1.25 var(--ui)}.brb span small{display:block;font:italic 400 13.5px/1.3 var(--read);color:var(--ink2);margin-top:2px}
+.pnav{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:26px}
+.pnav button{text-align:left;border:1px solid var(--rule);background:transparent;border-radius:8px;padding:9px 12px;cursor:pointer;color:var(--ink);font:600 14px/1.3 var(--ui)}
+.pnav button small{display:block;font:500 12px var(--ui);color:var(--ink2);margin-bottom:2px}
+.pnav button.nx{text-align:right;grid-column:2}
+.pnav button:hover{background:#F1F4EF}
+.up{display:inline-block;margin-top:6px;font:600 14px var(--ui);color:var(--c);text-decoration:none;border-bottom:1.5px solid currentColor}
+.pi .foot{font-family:var(--ui);margin-top:30px;padding-top:10px;border-top:1px solid var(--rule);font-size:12px;line-height:1.5;color:var(--ink2)}
+
+@media (max-width:860px){
+ header{flex-wrap:wrap;gap:6px 6px;padding:8px 10px}
+ .brand{flex:1 1 100%}
+ .brand b{font-size:17px}.brand span{display:none}
+ .seg button{padding:5px 8px;font-size:13px}
+ .tools{margin-left:auto;gap:5px}
+ .ib{height:32px;min-width:32px;padding:0 9px}
+ main{flex-direction:column}
+ #panel{width:auto;height:46%;border-left:0;border-top:1px solid var(--rule)}
+ 
+ .pi{padding:16px 18px 44px}
+ .pi h2{font-size:25px}
+ .legend{display:none}
+}
+body.min #panel{display:none}
+@media (max-width:1280px) and (min-width:861px){#panel{width:390px}}
+@media (prefers-reduced-motion:reduce){.layer,.node .bg{transition:none}}
 </style>
 </head>
 <body>
 <div id="app">
 <header>
- <h1>Die unberechtigte Eigenbesitzerin <small>Mindmap · Gruppe 8</small></h1>
- <button class="btn on" id="tMap">Mindmap</button>
- <button class="btn" id="tRel">Beziehungen</button>
- <button class="btn" id="home" title="Übersicht">⌂</button>
- <button class="btn" id="prev" aria-label="Zurück">◀</button>
- <button class="btn" id="next" aria-label="Weiter">▶</button>
- <button class="btn" id="tNotes" style="display:none">Notizen</button>
- <button class="btn" id="close">Panel ▾</button>
+ <div class="brand"><b>Die unberechtigte Eigenbesitzerin</b><span>Mindmap von Gruppe 8 zu Jenny Erpenbecks „Heimsuchung“</span></div>
+ <div class="seg" role="group" aria-label="Ansicht"><button id="vMap" aria-pressed="true">Mindmap</button><button id="vRel" aria-pressed="false">Beziehungen</button></div>
+ <div class="tools">
+  <button class="ib" id="home" title="Zur Übersicht" aria-label="Zur Übersicht"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M2.5 7.2 8 2.5l5.5 4.7V13a.5.5 0 0 1-.5.5H9.6V9.8H6.4v3.7H3a.5.5 0 0 1-.5-.5z"/></svg></button>
+  <button class="ib" id="prev" aria-label="Zurück"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 3 5 8l5 5"/></svg></button>
+  <button class="ib" id="next" aria-label="Weiter"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 3 5 5-5 5"/></svg></button>
+  <button class="ib" id="notesBtn" aria-pressed="true" hidden>Notizen</button>
+  <button class="ib" id="sheetBtn" aria-pressed="false">Text</button>
+ </div>
 </header>
 <main>
- <div id="stage"><svg id="svg" xmlns="http://www.w3.org/2000/svg"></svg><div class="hint">Klicke auf einen Ast für Details · Pfeiltasten zum Weiterblättern</div></div>
- <aside id="panel" aria-live="polite"></aside>
+ <div id="stage"><svg id="svg" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Mindmap"></svg>
+  <div class="legend" id="legend"></div></div>
+ <aside id="panel" aria-live="polite"><div class="pi" id="pi"></div></aside>
 </main>
 </div>
+<pre id="audit" hidden></pre>
 <script>
-const D={"center": {"id": "c", "title": "Die unberechtigte Eigenbesitzerin", "sub": "Kapitel + Epilog · Gruppe 8", "text": ["Das vorletzte Kapitel erzählt den Abschied der Enkelin der Schriftstellerin vom Haus am See. Sie hat es nach der Wende vor Gericht verloren, schleicht sich aber noch einmal heimlich hinein. Der Epilog erzählt danach den Abriss des Hauses.", "<b>Leitfrage:<\/b> Wem gehört ein Ort, an dem man aufgewachsen ist – dem, der das Recht hat, oder dem, der die Erinnerung hat?"]}, "branches": [{"id": "b1", "title": "Figur & Herkunft", "task": "Aufgabe 1", "short": "Wer ist sie, woher kommt sie?", "intro": "Wer die Hauptfigur ist, aus welcher Familie sie stammt und wann sie lebt. Achtung: Ihr Geburtsjahr und das Jahr der Handlung nennt der Text nicht, beides lässt sich nur erschließen.", "kids": [{"t": "Kein Name", "text": ["Die Figur hat keinen Namen. Sie heißt nur „die unberechtigte Eigenbesitzerin“ bzw. „die ehemalige Hausherrin“ – also nach ihrem rechtlichen Status. Das gilt für fast alle Figuren im Roman."], "deutung": "Schon der Titel macht sie zu einem Fall aus der Akte: Das Recht bestimmt, wer sie ist. Ihre persönliche Geschichte (Kindheit, Erinnerung) steht im Gegensatz zu diesem Etikett – genau dieser Konflikt trägt das Kapitel."}, {"t": "Familienlinie", "text": ["<b>Großmutter:<\/b> die Schriftstellerin, aus dem sowjetischen Exil zurückgekehrt, bewohnte das Haus in der DDR-Zeit.", "<b>Vater:<\/b> im Exil geboren, war vier Jahre im Kinderheim, weil seine Eltern „an die kollektive Erziehung glaubten“. Er verachtet das Wort „Natur“ und fährt nach dem Rückgabeantrag nie wieder hinaus.", "<b>Enkelin:<\/b> verbringt als Kind alle Sommerferien im Haus."], "belege": [["Kap. „Die unberechtigte Eigenbesitzerin“", "„… die Sprache des Landes, in dem er geboren worden war“"], ["Kap. „Die unberechtigte Eigenbesitzerin“", "„Niemals hatte ihrem Vater viel an der Natur gelegen …“"]], "deutung": "Drei Generationen, drei Verhältnisse zum Ort: Die Großmutter findet hier nach dem Exil ein Zuhause, der Vater hat nie eine Bindung aufgebaut (Kinderheim, „Natur“-Verachtung), die Enkelin ist am stärksten gebunden. Interessant: Selbst der Vater vergleicht die Landschaft einmal mit dem Russisch seiner Kindheit – auch er hat also ein verdrängtes Heimatgefühl."}, {"t": "Geburtsjahr (erschlossen)", "flag": "Der Text nennt kein Geburtsjahr. Unsere Angabe ist ein begründeter Schluss, kein Zitat.", "text": ["Wahrscheinlich in den <b>1960er Jahren<\/b> geboren:", "• Der Vater ist im Exil (1930er/40er) geboren, sie gehört also zur nächsten Generation.", "• Ihre Kindheit verbringt sie in der DDR im Haus der Großmutter.", "• Beim Rückgabeverfahren nach der Wende ist sie längst erwachsen und arbeitet im Ausland."], "belege": [["Kap. „Die unberechtigte Eigenbesitzerin“", "„Bis in die obere Etage war der Schwamm gewachsen, während sie im Ausland arbeitete …“"], ["Kap. „Die unberechtigte Eigenbesitzerin“", "„… ihre sehr schöne Kindheit ihr, die längst erwachsen war …“"]]}, {"t": "Handlungszeit (erschlossen)", "flag": "Auch das Jahr der Handlung steht nicht im Text.", "text": ["Wahrscheinlich ein <b>Sommer Mitte der 2000er<\/b>:", "• Die Währungsunion 1990 liegt zurück („nach der Halbierung der ostdeutschen Konten“).", "• Das Haus wurde „vor neun Jahren“ ausgeräumt und stand danach „viele Jahre“ leer.", "• Es ist Sommer: „während der Sommer langsam zu Ende geht“."], "belege": [["Kap. „Die unberechtigte Eigenbesitzerin“", "„Verkaufen durften sie nicht …“"], ["Kap. „Die unberechtigte Eigenbesitzerin“", "„Alles, was an den zwei Wänden …“"]]}, {"t": "Biografische Skizze", "text": ["Sie ist die Enkelin der Schriftstellerin und hat als Kind alle Sommerferien im Haus am See verbracht. Nach dem Tod der Großmutter wird sie Miteigentümerin. Nach der Wende fordern die Erben der Frau des Architekten das Haus zurück, und sie verliert es nach einem langen Verfahren durch einen Vergleich. Bevor es verkauft und abgerissen wird, schleicht sie sich heimlich noch einmal hinein, putzt es und verabschiedet sich."]}]}, {"id": "b2", "title": "Ort & Erinnerung", "task": "Aufgabe 2", "short": "Wie kommt sie zum Haus, was bedeutet es?", "intro": "Wie die Enkelin zu dem Haus kommt und warum es für sie mehr ist als ein Gebäude.", "kids": [{"t": "Weg zum Haus", "text": ["Das Haus gehörte ihrer Großmutter. Nach deren Tod lässt der Vater sie „gleich als Miteigentümerin“ eintragen – er selbst will damit nichts zu tun haben."], "belege": [["Kap. „Die unberechtigte Eigenbesitzerin“", "„Deshalb hatte sie sich nicht darüber gewundert …“"]]}, {"t": "Erinnerungsräume", "text": ["• <b>Vögelchenzimmer:<\/b> dort wohnt sie in allen Sommerferien ihrer Kindheit", "• <b>Schrank:<\/b> „die Geheimtür ihrer Kinderzeit“ ins Schrankzimmer der Großeltern", "• <b>Besenkammertür:<\/b> „der Garten Eden in zwölf quadratischen Kapiteln“", "• <b>Geruch:<\/b> Pfefferminz und Kampfer – noch immer wie bei der Großmutter"], "belege": [["Kap. „Die unberechtigte Eigenbesitzerin“", "„Im Vögelchenzimmer, das sie ihre ganze Kindheit über …“"]]}, {"t": "Erinnerungsszenen", "text": ["• Fernsehabende, an denen die Großmutter „im bequemsten der Gartensessel“ saß", "• wie das Badehäuschen hangaufwärts versetzt wurde – sie und ihr Kinderfreund begleiteten die Arbeiter", "• der Tod der Großmutter: Sie sucht deren schönstes Nachthemd heraus und wäscht es"], "belege": [["Kap. „Die unberechtigte Eigenbesitzerin“", "„Jetzt denkt sie daran, wie ihre Großmutter …“"], ["Kap. „Die unberechtigte Eigenbesitzerin“", "„Noch während ihre Großmutter im Sterben lag …“"]]}, {"t": "Haus als Gedächtnis", "text": ["Jeder Raum ist mit einer Erinnerung verknüpft, selbst Geräusche: das Knarren der Treppe „bei der zweiten, der fünfzehnten und der vorletzten Stufe“. Die Forschung beschreibt das Sommerhaus deshalb als „Speicher der Erinnerung“ (Uni Duisburg-Essen, Literarikon)."], "deutung": "Das Haus ist für sie kein Besitz, sondern ein Archiv ihrer Kindheit. Deshalb trifft sie der Verlust so stark: Mit dem Haus verschwindet der Ort, an dem ihre Erinnerungen „wohnen“."}, {"t": "„Sehr schönes Gefängnis“", "text": ["Ihr Mann sagt: „Du hast deine Zeit dort gehabt.“ Sie kann ihm nicht erklären, dass die vergangene Zeit, seit klar ist, dass sie dort nicht alt werden wird, „in ihrem Rücken zu wuchern begann“ – die Kindheit wächst ihr „über den Kopf“."], "belege": [["Kap. „Die unberechtigte Eigenbesitzerin“", "„Was willst du, hatte ihr Mann immer gesagt …“"]], "deutung": "Erst der drohende Verlust macht die Bindung übermächtig. Das Oxymoron „schönes Gefängnis“ zeigt die Ambivalenz: Die Erinnerung ist wertvoll und hält sie zugleich fest."}]}, {"id": "b3", "title": "Recht & Verlust", "task": "Aufgabe 3", "short": "Warum verliert sie das Haus?", "intro": "Was „unberechtigte Eigenbesitzerin“ bedeutet, wer das Haus zurückfordert und warum ihre Kindheit vor Gericht nichts zählt.", "kids": [{"t": "Begriff", "flag": "Das Infoblatt AB 3 zum Begriff lag uns nicht vor – die Erklärung stützt sich auf das BGB.", "text": ["<b>Eigenbesitzer<\/b> ist, wer eine Sache besitzt, als gehöre sie ihm (§ 872 BGB).", "<b>Unberechtigt<\/b> heißt: Ihm fehlt das gültige Eigentum.", "Sie lebt also wie eine Eigentümerin im Haus, rechtlich gehört es ihr aber nicht."], "deutung": "Der Titel ist ein Paradox: „Eigen“ und „unberechtigt“ zugleich. Gefühlt ist es ihr Haus, juristisch nicht – genau diese Spannung ist das Thema des Kapitels."}, {"t": "Rückübertragung", "text": ["Nach der Wende regelte das Vermögensgesetz (1990) offene Eigentumsfragen nach dem Grundsatz <b>„Rückgabe vor Entschädigung“<\/b>: Frühere Eigentümer oder ihre Erben bekamen ihr Eigentum zurück.", "Den Antrag stellen „die im Westen lebenden Erben der Frau des Architekten“."], "belege": [["Kap. „Die unberechtigte Eigenbesitzerin“", "„… seit von den im Westen lebenden Erben …“"]]}, {"t": "Warum sie verliert", "text": ["• Der Kaufvertrag für das Gebäude aus der DDR ist nie wirksam geworden – damit fällt auch das Nutzungsrecht weg („Verliehen. Aufgehoben.“).", "• Ob sie das Haus ehrlich erworben hat, ist „nicht streiterheblich“.", "• Der Text nennt sogar die Anspruchsgrundlage: „Neun acht fünf BGB“ – § 985 BGB ist der Herausgabeanspruch des Eigentümers."], "belege": [["Kap. „Die unberechtigte Eigenbesitzerin“", "„Das Nutzungsrecht teilt das Schicksal …“"], ["Kap. „Die unberechtigte Eigenbesitzerin“", "„Klagend: Herausgabe und Räumung …“"]], "deutung": "Vor Gericht zählt nur das Eigentum, nicht die gelebte Bindung. Ihre Kindheit ist juristisch irrelevant."}, {"t": "Geld & Investor", "text": ["Nach der „Halbierung der ostdeutschen Konten“ fehlt das Geld, um das Haus zu erhalten. Ein Investor beseitigt den Schwamm und deckt das Dach neu, gibt aber auf, als er das Haus nicht kaufen kann, kappt den Strom und lässt es halb aufgerissen stehen."], "belege": [["Kap. „Die unberechtigte Eigenbesitzerin“", "„Der Investor hatte den Schwamm beseitigt …“"]]}, {"t": "Vergleich", "text": ["Am Ende steht kein Urteil, sondern ein Vergleich: Herausgabe und Räumung des Hauses „gegen geleistete Ausgleichszahlung“. Damit sind alle Ansprüche „abgegolten“."], "belege": [["Kap. „Die unberechtigte Eigenbesitzerin“", "„Klagend: Herausgabe und Räumung …“"]]}, {"t": "Kette der Verluste", "flag": "Die Vorgeschichte mit dem Architekten stammt aus früheren Kapiteln, nicht aus unserem.", "text": ["Schon in unserem Kapitel wird ein Uferstück „wieder der jüdischen Parzelle zugeschlagen“ – sie muss deshalb sogar den Unterpächtern kündigen.", "Aus den früheren Kapiteln wissen wir: Auch der Architekt kam an das Grundstück auf Kosten jüdischer Nachbarn, die später verfolgt wurden."], "belege": [["Kap. „Die unberechtigte Eigenbesitzerin“", "„Vor einem halben Jahr hatte sie den Unterpächtern …“"]], "deutung": "Ihr Verlust ist nicht einzigartig, sondern das letzte Glied einer Kette von Enteignungen. Das erschwert ein einfaches Urteil (siehe Ast 8)."}]}, {"id": "b4", "title": "Die letzten Wochen", "task": "Aufgabe 4", "short": "Verkauf vs. Wiederherstellen", "intro": "Zwei gegensätzliche Bewegungen: Die Erben verkaufen das Haus als Ware – die Enkelin stellt heimlich ihre Kindheit wieder her.", "kids": [{"t": "Erben & Maklerin", "text": ["Die Erbengemeinschaft aus Österreich, der Schweiz und Westdeutschland lässt das Haus über eine Maklerin verkaufen; vor dem Küchenfenster hängt „Zu verkaufen“. Mal kommt das eine, mal das andere Mitglied, um „nach dem Rechten zu sehen“."], "belege": [["Kap. „Die unberechtigte Eigenbesitzerin“", "„Nach diesem ersten Besuch der Maklerin …“"]]}, {"t": "Haus als Ware", "text": ["Die Maklerin wirbt mit dem „besseren Ufer“ und den Sonnenuntergängen – und ausgerechnet damit, dass der Architekt „Mitglied der Gruppe Albert Speer“ war. Unter Denkmalschutz steht das Haus nicht. Ihre Provision: 6 % plus MwSt."], "belege": [["Kap. „Die unberechtigte Eigenbesitzerin“", "„Das hier ist eindeutig das bessere Ufer …“"]], "deutung": "Was für die Enkelin Erinnerung ist, wird zum Verkaufsargument. Dass sogar die NS-Vergangenheit des Architekten als Werbung dient, zeigt bitter, wie Geschichte zur Ware wird."}, {"t": "Neue Eigentümer", "text": ["Beim letzten Besuch betreten die neuen Eigentümer und ihr Architekt das Haus nicht mehr. Sie deuten auf den See, das Badehaus und „auf den Platz, auf dem das Haus steht“."], "belege": [["Kap. „Die unberechtigte Eigenbesitzerin“", "„Sie hört die Autotüren der neuen Eigentümer …“"]], "deutung": "Nur der Platz zählt, nicht das Haus – der Abriss ist damit schon angekündigt."}, {"t": "Heimliche Rückkehr", "text": ["Sie kommt mit dem alten Schlüssel, den sie „von Rechts wegen“ längst hätte abgeben müssen, parkt oben an der Chaussee und schleicht durchs Gestrüpp. Sie schläft im Schrank des Vögelchenzimmers. Als die Maklerin Kunden durchs Haus führt und die Schranktür mit dem Spiegel öffnet („Und hier ist ein Spiegel“), liegt sie dahinter."], "belege": [["Kap. „Die unberechtigte Eigenbesitzerin“", "„An dem Morgen, an dem die Maklerin …“"]]}, {"t": "Wiederherstellen", "text": ["Sie putzt das ganze Haus, geht fünfmal zum See, um Wasser zu holen, hängt die Türen wieder ein, stellt den Tisch zurück, „wo er immer gestanden hat“, bohnert den Boden. Am Ende ist „alles, wie sie es immer gekannt hat“."], "belege": [["Kap. „Die unberechtigte Eigenbesitzerin“", "„Am nächsten Tag putzt sie die Fenster …“"]], "deutung": "Sie stellt nicht einfach ein Haus wieder her, sondern ihre Kindheit – ein letztes Mal, kurz bevor es zerstört wird. Gegenbewegung zur Maklerin: Erinnerung gegen Markt."}, {"t": "Abschiedsritual", "text": ["„Niemals ist der Hausfrieden größer gewesen“ als am letzten Tag. Der Text erinnert daran, dass das Fegen bei den Azteken „als eine heilige Handlung“ galt. Sie schließt „zurückweichend“ jede Tür, zuletzt die Haustür, und steckt den Schlüssel ein, „auch wenn der bald nur noch dazu da sein wird, Luft aufzuschließen“."], "belege": [["Kap. „Die unberechtigte Eigenbesitzerin“", "„Niemals ist der Hausfrieden größer gewesen …“"], ["Kap. „Die unberechtigte Eigenbesitzerin“", "„… und steckt den abgegriffenen Schlüssel ein …“"]], "deutung": "Ironie: „Hausfrieden“ ist auch ein Rechtsbegriff – juristisch begeht sie „verbotene Eigenmacht“, erlebt aber den größten Frieden im Haus."}]}, {"id": "b5", "title": "Sprache & Erzählweise", "task": "Analyse", "short": "Wie wird erzählt?", "intro": "Wie Erpenbeck den Konflikt zwischen Recht und Erinnerung schon in der Sprache sichtbar macht.", "kids": [{"t": "Montage", "text": ["Erinnerung und Gerichts-/Grundbuchsprache stehen unvermittelt nebeneinander. Beispiel: Sie öffnet, „Zug um Zug gegen Räumung“ …, „verbotene Eigenmacht“, „die Geheimtür ihrer Kinderzeit“."], "belege": [["Kap. „Die unberechtigte Eigenbesitzerin“", "„Im Vögelchenzimmer, das sie ihre ganze Kindheit über …“"]], "deutung": "Die Sprache spiegelt den Konflikt: Das Recht dringt bis in ihre intimsten Erinnerungen ein."}, {"t": "Ohne Anführungszeichen", "text": ["Die juristischen Fragmente sind nicht als Zitat gekennzeichnet; oft sind es bloße Satzfetzen („Unstreitig.“, „Bestandskraft.“, „Abgegolten.“)."], "deutung": "Wirkung wie ein Bewusstseinsstrom: Das Verfahren hat sich in ihr Denken eingeschrieben, sie kann es nicht abschalten."}, {"t": "Personales Erzählen", "text": ["Ein Er-/Sie-Erzähler bleibt nah an ihrer Wahrnehmung. Andere Figuren (Maklerin, Kundschaft) erleben wir nur über das, was sie aus dem Schrank hört."], "deutung": "Wir sind mit ihr eingeschlossen – das verstärkt die Spannung der Schrank-Szene."}, {"t": "Zeitebenen", "text": ["Die Gegenwart (die letzten Wochen) steht im <b>Präsens<\/b> („Und jetzt will sie noch einmal ins Haus gehen“), die Vorgeschichte im <b>Plusquamperfekt<\/b> („hatte sie sich nicht darüber gewundert“)."]}, {"t": "Ende im Amtsdeutsch", "text": ["Das Kapitel endet nicht mit ihr, sondern mit Fragmenten wie „Anlagenkonvolut B 3. Wir beantragen zu erkennen.“ – ein Satz, der abbricht."], "deutung": "Das Recht behält das letzte Wort; ihre Geschichte wird zur Akte."}]}, {"id": "b6", "title": "Schlüsselstelle: Schlingen", "task": "Aufgabe 6", "short": "Wer wird woran gebunden?", "intro": "„Wie mit Schlingen band die Zeit den Ort dort fest, wo er war …“ – die zentrale Bildstelle des Kapitels.", "kids": [{"t": "Wer an was?", "text": ["Die Zeit bindet …", "• den Ort fest, „wo er war“", "• die Erde an sich selbst", "• die Figur an diese Erde", "• sie und den Kinderfreund „für immer aneinander“ – obwohl sie ihn seit über neun Jahren nicht gesehen hat und ihm „wahrscheinlich nie wieder begegnen“ wird"], "belege": [["Kap. „Die unberechtigte Eigenbesitzerin“", "„Wie mit Schlingen band die Zeit den Ort dort fest …“"]]}, {"t": "Umkehrung", "text": ["Grammatisch ist <b>die Zeit<\/b> das Subjekt, die Figur nur Objekt. Nicht sie hält den Ort fest, sondern sie wird festgehalten."], "deutung": "Sie ist dem Ort ausgeliefert – passend zum „sehr schönen Gefängnis“ direkt davor."}, {"t": "Doppeldeutigkeit", "text": ["Eine Schlinge verbindet – aber sie fängt auch (Falle, Strick). Die viermalige Wiederholung von „band … fest“ verstärkt das Gefühl, eingeschnürt zu sein."], "deutung": "Bindung gibt Halt und nimmt Freiheit – beides gleichzeitig."}, {"t": "Bedeutung fürs Ende", "text": ["Rechtlich verliert sie das Haus, physisch wird es abgerissen – die Bindung aber bleibt. Der Ort existiert danach nur noch in ihr (Schlüssel, der „Luft aufzuschließen“ wird). Dass die Erde „an sich selbst“ gebunden ist, verweist auf den Epilog: Am Ende bleibt nur die Landschaft."], "deutung": "Die Stelle beantwortet die Leitfrage auf ihre Weise: Der Ort gehört niemandem – aber er hält die fest, die ihn erlebt haben."}]}, {"id": "b7", "title": "Epilog & Rahmen", "task": "Aufgabe 5", "short": "Abriss und Kreis zum Prolog", "intro": "Was am Ende mit dem Haus passiert – und warum der Epilog so kalt erzählt ist.", "kids": [{"t": "Was passiert", "text": ["Das Haus wird abgerissen: Erst wird es entkernt (ca. 5 Mann, 3–5 Tage), dann mit einem Hydraulikbagger abgetragen (3 Mann, ca. anderthalb Wochen). Am Ende bleibt „nur noch eine Grube“."], "belege": [["Epilog", "„Bei diesem Abriß …“"]]}, {"t": "Protokollstil", "text": ["Kursiv gesetzt, sachlich wie ein Fachtext, ohne Figuren und ohne Gefühle. Der Abriss läuft ab „wie bei allen anderen“ Abrissen."], "deutung": "Das Haus ist kein besonderer Ort mehr, sondern ein Fall unter vielen – die Kälte der Sprache macht den Verlust gerade spürbar."}, {"t": "Zahlen", "text": ["• ca. 900 m³ umbauter Raum", "• ca. 17 Lkw-Fahrten Schutt", "• Haupthaus „rund 500 Tonnen“, Badehaus „knapp 4 Tonnen“"], "deutung": "Alles, was im Roman Bedeutung hatte (Schrank, Treppe, Türen), wird zu Gewicht und Volumen."}, {"t": "Kreis zum Prolog", "text": ["Im Prolog entsteht der See nach der Eiszeit und ist nur „etwas Zeitweiliges“; jede Hohlform ist „nur dazu da“, wieder zugeschüttet zu werden. Im Epilog bleibt eine Grube, und „für einen kurzen Moment“ gleicht die Landschaft „wieder sich selbst“, bevor ein neues Haus gebaut wird."], "belege": [["Epilog", "„Bevor auf demselben Platz ein anderes Haus gebaut werden wird …“"], ["Prolog", "„… wie jede Hohlform war auch diese Rinne …“"]], "deutung": "Der Rahmen stellt die Menschengeschichte in die Erdgeschichte: Besitz, Recht und Erinnerung sind vorübergehend, die Landschaft bleibt."}]}, {"id": "b8", "title": "Beurteilung", "task": "AFB III", "short": "Unsere Bewertung", "intro": "Wir beziehen Stellung: Was lässt der Text offen, und wie bewerten wir es?", "kids": [{"t": "Opfer oder „unberechtigt“?", "pro": "Sie hat nichts Unrechtes getan, das Haus redlich bewohnt und verliert ihre Kindheit an Erben, die es nur verkaufen.", "contra": "Das Haus hat eine Vorgeschichte von Enteignungen; auch ihre Familie profitierte von einer früheren Enteignung (Architekt). Das Ufer kehrt zur „jüdischen Parzelle“ zurück.", "urteil": "Sie ist subjektiv Opfer, objektiv aber nur das letzte Glied in einer Kette. Der Roman verweigert bewusst eine einfache Opferrolle."}, {"t": "Recht vs. Gerechtigkeit", "pro": "„Rückgabe vor Entschädigung“ versucht, altes Unrecht rückgängig zu machen – das ist grundsätzlich gerecht.", "contra": "Das Recht fragt nicht nach gelebter Bindung („nicht streiterheblich“). Am Ende gewinnt nicht die Erinnerung, sondern der Markt: verkauft, abgerissen.", "urteil": "Rechtlich korrekt, menschlich unbefriedigend. Erpenbeck zeigt, dass Recht und Gerechtigkeit nicht dasselbe sind."}, {"t": "Abschied oder Festklammern?", "pro": "Das Putzen ist ein Ritual (Azteken: „heilige Handlung“), sie gibt am Ende den Ort frei und schließt ab.", "contra": "Sie bricht das Recht („verbotene Eigenmacht“), versteckt sich im Schrank und behält den Schlüssel.", "urteil": "Beides: Sie verabschiedet sich vom Haus, aber nicht von der Bindung – genau das sagt das Schlingen-Bild."}, {"t": "Ende: Trost oder Gleichgültigkeit?", "pro": "Die Landschaft „gleicht … wieder sich selbst“ – alles kehrt zum Ursprung zurück, ein ruhiger Schluss.", "contra": "Die Natur ist gleichgültig gegenüber den Menschen; „bevor ein anderes Haus gebaut werden wird“ – der Kreislauf von Besitz geht einfach weiter.", "urteil": "Für uns eher nüchtern als tröstlich: Der Roman relativiert alle Besitzansprüche, auch den der Enkelin."}, {"t": "Antwort auf die Leitfrage", "text": ["Wem gehört der Ort? <b>Rechtlich<\/b> den Erben, <b>emotional<\/b> der Enkelin, <b>auf Dauer<\/b> niemandem. Schon im Kapitel steht das Wort „Verliehen.“ – Besitz ist im Roman immer nur geliehen.", "Erpenbeck selbst sagt über Heimat, sie sei etwas, „das man wahrscheinlich erst bemerkt, wenn man es verloren hat“ (Interview mit der „Zeit“)."], "deutung": "Genau das passiert der Enkelin: Erst der Verlust macht ihr die Bindung bewusst – und unauflösbar."}]}], "rel": {"nodes": [["enk", "Enkelin", "die unberechtigte Eigenbesitzerin", "Hauptfigur. Verliert das Haus ihrer Kindheit nach der Wende, schleicht sich ein letztes Mal hinein und verabschiedet sich.", 0, 0], ["oma", "Großmutter", "die Schriftstellerin", "Aus dem sowjetischen Exil zurückgekehrt, lebte in der DDR im Haus. Nach ihrem Tod wird die Enkelin Miteigentümerin. Ihr Geruch (Pfefferminz, Kampfer) ist noch im Schrankzimmer.", -470, -260], ["vat", "Vater", "Sohn der Schriftstellerin", "Im Exil geboren, vier Jahre im Kinderheim. Verachtet „Natur“, lässt die Tochter als Miteigentümerin eintragen und fährt nach dem Rückgabeantrag nie wieder hin.", -500, 60], ["mann", "Ehemann", "", "„Du hast deine Zeit dort gehabt.“ – versteht ihre Bindung nicht.", -330, 330], ["kf", "Kinderfreund", "", "Begleitete mit ihr das Badehaus den Hang hinauf, half beim Ausräumen und entdeckte den Schwamm. Sie sieht ihn heimlich vom Fenster aus, trifft ihn aber nicht. Durch die „Schlingen“ „für immer“ mit ihr verbunden.", 260, 340], ["erb", "Erben der Frau des Architekten", "Erbengemeinschaft", "Leben im Westen (Österreich, Schweiz, Westdeutschland). Beantragen die Rückübertragung und lassen das Haus verkaufen.", 470, -260], ["mak", "Maklerin", "", "Verkauft das Haus als Ware („das bessere Ufer“, „Gruppe Albert Speer“), 6 % Provision. Führt Kunden durchs Haus, während die Enkelin im Schrank liegt.", 560, 60], ["neu", "Neue Eigentümer", "+ ihr Architekt", "Betreten das Haus nicht mehr, zeigen nur „auf den Platz“ – lassen es abreißen.", 640, 330], ["arch", "Architekt", "Vorgeschichte (frühere Kapitel)", "Baute das Haus. Seine Frau ist die Erblasserin. Im Roman ist er schon selbst Teil einer Kette von Enteignungen.", 0, -380]], "edges": [["oma", "enk", "Enkelin · vererbt das Haus"], ["oma", "vat", "Mutter"], ["vat", "enk", "lässt sie eintragen"], ["mann", "enk", "„Du hast deine Zeit dort gehabt“"], ["kf", "enk", "Schlingen: „für immer aneinander“"], ["erb", "enk", "klagen auf Herausgabe"], ["erb", "mak", "beauftragen"], ["mak", "neu", "verkauft an"], ["arch", "erb", "seine Frau hinterlässt die Erben"], ["mak", "enk", "führt Kunden vorbei, während sie im Schrank liegt"]]}};
-const PRESENTER=false;
-const COLORS=['#2F6690','#3A7D44','#8A5A00','#9A4128','#6A4C93','#1F7A7A','#5C5C5C','#B23A48'];
-const NS='http://www.w3.org/2000/svg', svg=document.getElementById('svg'), panel=document.getElementById('panel');
+const D={"center": {"id": "c", "title": "Die unberechtigte Eigenbesitzerin", "sub": "Kapitel und Epilog", "text": ["Das vorletzte Kapitel erzählt den Abschied der Enkelin der Schriftstellerin vom Haus am See. Sie hat es nach der Wende vor Gericht verloren, schleicht sich aber noch einmal heimlich hinein. Der Epilog erzählt danach den Abriss des Hauses.", "<b>Leitfrage:<\/b> Wem gehört ein Ort, an dem man aufgewachsen ist – dem, der das Recht hat, oder dem, der die Erinnerung hat?"]}, "branches": [{"id": "b1", "title": "Figur & Herkunft", "task": "Aufgabe 1", "short": "Wer ist sie, woher kommt sie?", "intro": "Wer die Hauptfigur ist, aus welcher Familie sie stammt und wann sie lebt. Achtung: Ihr Geburtsjahr und das Jahr der Handlung nennt der Text nicht, beides lässt sich nur erschließen.", "kids": [{"t": "Kein Name", "text": ["Die Figur hat keinen Namen. Sie heißt nur „die unberechtigte Eigenbesitzerin“ bzw. „die ehemalige Hausherrin“ – also nach ihrem rechtlichen Status. Das gilt für fast alle Figuren im Roman."], "deutung": "Schon der Titel macht sie zu einem Fall aus der Akte: Das Recht bestimmt, wer sie ist. Ihre persönliche Geschichte (Kindheit, Erinnerung) steht im Gegensatz zu diesem Etikett – genau dieser Konflikt trägt das Kapitel."}, {"t": "Familienlinie", "text": ["<b>Großmutter:<\/b> die Schriftstellerin, aus dem sowjetischen Exil zurückgekehrt, bewohnte das Haus in der DDR-Zeit.", "<b>Vater:<\/b> im Exil geboren, war vier Jahre im Kinderheim, weil seine Eltern „an die kollektive Erziehung glaubten“. Er verachtet das Wort „Natur“ und fährt nach dem Rückgabeantrag nie wieder hinaus.", "<b>Enkelin:<\/b> verbringt als Kind alle Sommerferien im Haus."], "belege": [["Kap. „Die unberechtigte Eigenbesitzerin“", "„… die Sprache des Landes, in dem er geboren worden war“"], ["Kap. „Die unberechtigte Eigenbesitzerin“", "„Niemals hatte ihrem Vater viel an der Natur gelegen …“"]], "deutung": "Drei Generationen, drei Verhältnisse zum Ort: Die Großmutter findet hier nach dem Exil ein Zuhause, der Vater hat nie eine Bindung aufgebaut (Kinderheim, „Natur“-Verachtung), die Enkelin ist am stärksten gebunden. Interessant: Selbst der Vater vergleicht die Landschaft einmal mit dem Russisch seiner Kindheit – auch er hat also ein verdrängtes Heimatgefühl."}, {"t": "Geburtsjahr (erschlossen)", "flag": "Der Text nennt kein Geburtsjahr. Unsere Angabe ist ein begründeter Schluss, kein Zitat.", "text": ["Wahrscheinlich in den <b>1960er Jahren<\/b> geboren:", "• Der Vater ist im Exil (1930er/40er) geboren, sie gehört also zur nächsten Generation.", "• Ihre Kindheit verbringt sie in der DDR im Haus der Großmutter.", "• Beim Rückgabeverfahren nach der Wende ist sie längst erwachsen und arbeitet im Ausland."], "belege": [["Kap. „Die unberechtigte Eigenbesitzerin“", "„Bis in die obere Etage war der Schwamm gewachsen, während sie im Ausland arbeitete …“"], ["Kap. „Die unberechtigte Eigenbesitzerin“", "„… ihre sehr schöne Kindheit ihr, die längst erwachsen war …“"]]}, {"t": "Handlungszeit (erschlossen)", "flag": "Auch das Jahr der Handlung steht nicht im Text.", "text": ["Wahrscheinlich ein <b>Sommer Mitte der 2000er<\/b>:", "• Die Währungsunion 1990 liegt zurück („nach der Halbierung der ostdeutschen Konten“).", "• Das Haus wurde „vor neun Jahren“ ausgeräumt und stand danach „viele Jahre“ leer.", "• Es ist Sommer: „während der Sommer langsam zu Ende geht“."], "belege": [["Kap. „Die unberechtigte Eigenbesitzerin“", "„Verkaufen durften sie nicht …“"], ["Kap. „Die unberechtigte Eigenbesitzerin“", "„Alles, was an den zwei Wänden …“"]]}, {"t": "Biografische Skizze", "text": ["Sie ist die Enkelin der Schriftstellerin und hat als Kind alle Sommerferien im Haus am See verbracht. Nach dem Tod der Großmutter wird sie Miteigentümerin. Nach der Wende fordern die Erben der Frau des Architekten das Haus zurück, und sie verliert es nach einem langen Verfahren durch einen Vergleich. Bevor es verkauft und abgerissen wird, schleicht sie sich heimlich noch einmal hinein, putzt es und verabschiedet sich."]}]}, {"id": "b2", "title": "Ort & Erinnerung", "task": "Aufgabe 2", "short": "Wie kommt sie zum Haus, was bedeutet es?", "intro": "Wie die Enkelin zu dem Haus kommt und warum es für sie mehr ist als ein Gebäude.", "kids": [{"t": "Weg zum Haus", "text": ["Das Haus gehörte ihrer Großmutter. Nach deren Tod lässt der Vater sie „gleich als Miteigentümerin“ eintragen – er selbst will damit nichts zu tun haben."], "belege": [["Kap. „Die unberechtigte Eigenbesitzerin“", "„Deshalb hatte sie sich nicht darüber gewundert …“"]]}, {"t": "Erinnerungsräume", "text": ["• <b>Vögelchenzimmer:<\/b> dort wohnt sie in allen Sommerferien ihrer Kindheit", "• <b>Schrank:<\/b> „die Geheimtür ihrer Kinderzeit“ ins Schrankzimmer der Großeltern", "• <b>Besenkammertür:<\/b> „der Garten Eden in zwölf quadratischen Kapiteln“", "• <b>Geruch:<\/b> Pfefferminz und Kampfer – noch immer wie bei der Großmutter"], "belege": [["Kap. „Die unberechtigte Eigenbesitzerin“", "„Im Vögelchenzimmer, das sie ihre ganze Kindheit über …“"]]}, {"t": "Erinnerungsszenen", "text": ["• Fernsehabende, an denen die Großmutter „im bequemsten der Gartensessel“ saß", "• wie das Badehäuschen hangaufwärts versetzt wurde – sie und ihr Kinderfreund begleiteten die Arbeiter", "• der Tod der Großmutter: Sie sucht deren schönstes Nachthemd heraus und wäscht es"], "belege": [["Kap. „Die unberechtigte Eigenbesitzerin“", "„Jetzt denkt sie daran, wie ihre Großmutter …“"], ["Kap. „Die unberechtigte Eigenbesitzerin“", "„Noch während ihre Großmutter im Sterben lag …“"]]}, {"t": "Haus als Gedächtnis", "text": ["Jeder Raum ist mit einer Erinnerung verknüpft, selbst Geräusche: das Knarren der Treppe „bei der zweiten, der fünfzehnten und der vorletzten Stufe“. Die Forschung beschreibt das Sommerhaus deshalb als „Speicher der Erinnerung“ (Uni Duisburg-Essen, Literarikon)."], "deutung": "Das Haus ist für sie kein Besitz, sondern ein Archiv ihrer Kindheit. Deshalb trifft sie der Verlust so stark: Mit dem Haus verschwindet der Ort, an dem ihre Erinnerungen „wohnen“."}, {"t": "„Sehr schönes Gefängnis“", "text": ["Ihr Mann sagt: „Du hast deine Zeit dort gehabt.“ Sie kann ihm nicht erklären, dass die vergangene Zeit, seit klar ist, dass sie dort nicht alt werden wird, „in ihrem Rücken zu wuchern begann“ – die Kindheit wächst ihr „über den Kopf“."], "belege": [["Kap. „Die unberechtigte Eigenbesitzerin“", "„Was willst du, hatte ihr Mann immer gesagt …“"]], "deutung": "Erst der drohende Verlust macht die Bindung übermächtig. Das Oxymoron „schönes Gefängnis“ zeigt die Ambivalenz: Die Erinnerung ist wertvoll und hält sie zugleich fest."}]}, {"id": "b3", "title": "Recht & Verlust", "task": "Aufgabe 3", "short": "Warum verliert sie das Haus?", "intro": "Was „unberechtigte Eigenbesitzerin“ bedeutet, wer das Haus zurückfordert und warum ihre Kindheit vor Gericht nichts zählt.", "kids": [{"t": "Begriff", "flag": "Das Infoblatt AB 3 zum Begriff lag uns nicht vor – die Erklärung stützt sich auf das BGB.", "text": ["<b>Eigenbesitzer<\/b> ist, wer eine Sache besitzt, als gehöre sie ihm (§ 872 BGB).", "<b>Unberechtigt<\/b> heißt: Ihm fehlt das gültige Eigentum.", "Sie lebt also wie eine Eigentümerin im Haus, rechtlich gehört es ihr aber nicht."], "deutung": "Der Titel ist ein Paradox: „Eigen“ und „unberechtigt“ zugleich. Gefühlt ist es ihr Haus, juristisch nicht – genau diese Spannung ist das Thema des Kapitels."}, {"t": "Rückübertragung", "text": ["Nach der Wende regelte das Vermögensgesetz (1990) offene Eigentumsfragen nach dem Grundsatz <b>„Rückgabe vor Entschädigung“<\/b>: Frühere Eigentümer oder ihre Erben bekamen ihr Eigentum zurück.", "Den Antrag stellen „die im Westen lebenden Erben der Frau des Architekten“."], "belege": [["Kap. „Die unberechtigte Eigenbesitzerin“", "„… seit von den im Westen lebenden Erben …“"]]}, {"t": "Warum sie verliert", "text": ["• Der Kaufvertrag für das Gebäude aus der DDR ist nie wirksam geworden – damit fällt auch das Nutzungsrecht weg („Verliehen. Aufgehoben.“).", "• Ob sie das Haus ehrlich erworben hat, ist „nicht streiterheblich“.", "• Der Text nennt sogar die Anspruchsgrundlage: „Neun acht fünf BGB“ – § 985 BGB ist der Herausgabeanspruch des Eigentümers."], "belege": [["Kap. „Die unberechtigte Eigenbesitzerin“", "„Das Nutzungsrecht teilt das Schicksal …“"], ["Kap. „Die unberechtigte Eigenbesitzerin“", "„Klagend: Herausgabe und Räumung …“"]], "deutung": "Vor Gericht zählt nur das Eigentum, nicht die gelebte Bindung. Ihre Kindheit ist juristisch irrelevant."}, {"t": "Geld & Investor", "text": ["Nach der „Halbierung der ostdeutschen Konten“ fehlt das Geld, um das Haus zu erhalten. Ein Investor beseitigt den Schwamm und deckt das Dach neu, gibt aber auf, als er das Haus nicht kaufen kann, kappt den Strom und lässt es halb aufgerissen stehen."], "belege": [["Kap. „Die unberechtigte Eigenbesitzerin“", "„Der Investor hatte den Schwamm beseitigt …“"]]}, {"t": "Vergleich", "text": ["Am Ende steht kein Urteil, sondern ein Vergleich: Herausgabe und Räumung des Hauses „gegen geleistete Ausgleichszahlung“. Damit sind alle Ansprüche „abgegolten“."], "belege": [["Kap. „Die unberechtigte Eigenbesitzerin“", "„Klagend: Herausgabe und Räumung …“"]]}, {"t": "Kette der Verluste", "flag": "Die Vorgeschichte mit dem Architekten stammt aus früheren Kapiteln, nicht aus unserem.", "text": ["Schon in unserem Kapitel wird ein Uferstück „wieder der jüdischen Parzelle zugeschlagen“ – sie muss deshalb sogar den Unterpächtern kündigen.", "Aus den früheren Kapiteln wissen wir: Auch der Architekt kam an das Grundstück auf Kosten jüdischer Nachbarn, die später verfolgt wurden."], "belege": [["Kap. „Die unberechtigte Eigenbesitzerin“", "„Vor einem halben Jahr hatte sie den Unterpächtern …“"]], "deutung": "Ihr Verlust ist nicht einzigartig, sondern das letzte Glied einer Kette von Enteignungen. Das erschwert ein einfaches Urteil (siehe Ast 8)."}]}, {"id": "b4", "title": "Die letzten Wochen", "task": "Aufgabe 4", "short": "Verkauf vs. Wiederherstellen", "intro": "Zwei gegensätzliche Bewegungen: Die Erben verkaufen das Haus als Ware – die Enkelin stellt heimlich ihre Kindheit wieder her.", "kids": [{"t": "Erben & Maklerin", "text": ["Die Erbengemeinschaft aus Österreich, der Schweiz und Westdeutschland lässt das Haus über eine Maklerin verkaufen; vor dem Küchenfenster hängt „Zu verkaufen“. Mal kommt das eine, mal das andere Mitglied, um „nach dem Rechten zu sehen“."], "belege": [["Kap. „Die unberechtigte Eigenbesitzerin“", "„Nach diesem ersten Besuch der Maklerin …“"]]}, {"t": "Haus als Ware", "text": ["Die Maklerin wirbt mit dem „besseren Ufer“ und den Sonnenuntergängen – und ausgerechnet damit, dass der Architekt „Mitglied der Gruppe Albert Speer“ war. Unter Denkmalschutz steht das Haus nicht. Ihre Provision: 6 % plus MwSt."], "belege": [["Kap. „Die unberechtigte Eigenbesitzerin“", "„Das hier ist eindeutig das bessere Ufer …“"]], "deutung": "Was für die Enkelin Erinnerung ist, wird zum Verkaufsargument. Dass sogar die NS-Vergangenheit des Architekten als Werbung dient, zeigt bitter, wie Geschichte zur Ware wird."}, {"t": "Neue Eigentümer", "text": ["Beim letzten Besuch betreten die neuen Eigentümer und ihr Architekt das Haus nicht mehr. Sie deuten auf den See, das Badehaus und „auf den Platz, auf dem das Haus steht“."], "belege": [["Kap. „Die unberechtigte Eigenbesitzerin“", "„Sie hört die Autotüren der neuen Eigentümer …“"]], "deutung": "Nur der Platz zählt, nicht das Haus – der Abriss ist damit schon angekündigt."}, {"t": "Heimliche Rückkehr", "text": ["Sie kommt mit dem alten Schlüssel, den sie „von Rechts wegen“ längst hätte abgeben müssen, parkt oben an der Chaussee und schleicht durchs Gestrüpp. Sie schläft im Schrank des Vögelchenzimmers. Als die Maklerin Kunden durchs Haus führt und die Schranktür mit dem Spiegel öffnet („Und hier ist ein Spiegel“), liegt sie dahinter."], "belege": [["Kap. „Die unberechtigte Eigenbesitzerin“", "„An dem Morgen, an dem die Maklerin …“"]]}, {"t": "Wiederherstellen", "text": ["Sie putzt das ganze Haus, geht fünfmal zum See, um Wasser zu holen, hängt die Türen wieder ein, stellt den Tisch zurück, „wo er immer gestanden hat“, bohnert den Boden. Am Ende ist „alles, wie sie es immer gekannt hat“."], "belege": [["Kap. „Die unberechtigte Eigenbesitzerin“", "„Am nächsten Tag putzt sie die Fenster …“"]], "deutung": "Sie stellt nicht einfach ein Haus wieder her, sondern ihre Kindheit – ein letztes Mal, kurz bevor es zerstört wird. Gegenbewegung zur Maklerin: Erinnerung gegen Markt."}, {"t": "Abschiedsritual", "text": ["„Niemals ist der Hausfrieden größer gewesen“ als am letzten Tag. Der Text erinnert daran, dass das Fegen bei den Azteken „als eine heilige Handlung“ galt. Sie schließt „zurückweichend“ jede Tür, zuletzt die Haustür, und steckt den Schlüssel ein, „auch wenn der bald nur noch dazu da sein wird, Luft aufzuschließen“."], "belege": [["Kap. „Die unberechtigte Eigenbesitzerin“", "„Niemals ist der Hausfrieden größer gewesen …“"], ["Kap. „Die unberechtigte Eigenbesitzerin“", "„… und steckt den abgegriffenen Schlüssel ein …“"]], "deutung": "Ironie: „Hausfrieden“ ist auch ein Rechtsbegriff – juristisch begeht sie „verbotene Eigenmacht“, erlebt aber den größten Frieden im Haus."}]}, {"id": "b5", "title": "Sprache & Erzählweise", "task": "Analyse", "short": "Wie wird erzählt?", "intro": "Wie Erpenbeck den Konflikt zwischen Recht und Erinnerung schon in der Sprache sichtbar macht.", "kids": [{"t": "Montage", "text": ["Erinnerung und Gerichts-/Grundbuchsprache stehen unvermittelt nebeneinander. Beispiel: Sie öffnet, „Zug um Zug gegen Räumung“ …, „verbotene Eigenmacht“, „die Geheimtür ihrer Kinderzeit“."], "belege": [["Kap. „Die unberechtigte Eigenbesitzerin“", "„Im Vögelchenzimmer, das sie ihre ganze Kindheit über …“"]], "deutung": "Die Sprache spiegelt den Konflikt: Das Recht dringt bis in ihre intimsten Erinnerungen ein."}, {"t": "Ohne Anführungszeichen", "text": ["Die juristischen Fragmente sind nicht als Zitat gekennzeichnet; oft sind es bloße Satzfetzen („Unstreitig.“, „Bestandskraft.“, „Abgegolten.“)."], "deutung": "Wirkung wie ein Bewusstseinsstrom: Das Verfahren hat sich in ihr Denken eingeschrieben, sie kann es nicht abschalten."}, {"t": "Personales Erzählen", "text": ["Ein Er-/Sie-Erzähler bleibt nah an ihrer Wahrnehmung. Andere Figuren (Maklerin, Kundschaft) erleben wir nur über das, was sie aus dem Schrank hört."], "deutung": "Wir sind mit ihr eingeschlossen – das verstärkt die Spannung der Schrank-Szene."}, {"t": "Zeitebenen", "text": ["Die Gegenwart (die letzten Wochen) steht im <b>Präsens<\/b> („Und jetzt will sie noch einmal ins Haus gehen“), die Vorgeschichte im <b>Plusquamperfekt<\/b> („hatte sie sich nicht darüber gewundert“)."]}, {"t": "Ende im Amtsdeutsch", "text": ["Das Kapitel endet nicht mit ihr, sondern mit Fragmenten wie „Anlagenkonvolut B 3. Wir beantragen zu erkennen.“ – ein Satz, der abbricht."], "deutung": "Das Recht behält das letzte Wort; ihre Geschichte wird zur Akte."}]}, {"id": "b6", "title": "Schlüsselstelle: Schlingen", "task": "Aufgabe 6", "short": "Wer wird woran gebunden?", "intro": "„Wie mit Schlingen band die Zeit den Ort dort fest, wo er war …“ – die zentrale Bildstelle des Kapitels.", "kids": [{"t": "Wer an was?", "text": ["Die Zeit bindet …", "• den Ort fest, „wo er war“", "• die Erde an sich selbst", "• die Figur an diese Erde", "• sie und den Kinderfreund „für immer aneinander“ – obwohl sie ihn seit über neun Jahren nicht gesehen hat und ihm „wahrscheinlich nie wieder begegnen“ wird"], "belege": [["Kap. „Die unberechtigte Eigenbesitzerin“", "„Wie mit Schlingen band die Zeit den Ort dort fest …“"]]}, {"t": "Umkehrung", "text": ["Grammatisch ist <b>die Zeit<\/b> das Subjekt, die Figur nur Objekt. Nicht sie hält den Ort fest, sondern sie wird festgehalten."], "deutung": "Sie ist dem Ort ausgeliefert – passend zum „sehr schönen Gefängnis“ direkt davor."}, {"t": "Doppeldeutigkeit", "text": ["Eine Schlinge verbindet – aber sie fängt auch (Falle, Strick). Die viermalige Wiederholung von „band … fest“ verstärkt das Gefühl, eingeschnürt zu sein."], "deutung": "Bindung gibt Halt und nimmt Freiheit – beides gleichzeitig."}, {"t": "Bedeutung fürs Ende", "text": ["Rechtlich verliert sie das Haus, physisch wird es abgerissen – die Bindung aber bleibt. Der Ort existiert danach nur noch in ihr (Schlüssel, der „Luft aufzuschließen“ wird). Dass die Erde „an sich selbst“ gebunden ist, verweist auf den Epilog: Am Ende bleibt nur die Landschaft."], "deutung": "Die Stelle beantwortet die Leitfrage auf ihre Weise: Der Ort gehört niemandem – aber er hält die fest, die ihn erlebt haben."}]}, {"id": "b7", "title": "Epilog & Rahmen", "task": "Aufgabe 5", "short": "Abriss und Kreis zum Prolog", "intro": "Was am Ende mit dem Haus passiert – und warum der Epilog so kalt erzählt ist.", "kids": [{"t": "Was passiert", "text": ["Das Haus wird abgerissen: Erst wird es entkernt (ca. 5 Mann, 3–5 Tage), dann mit einem Hydraulikbagger abgetragen (3 Mann, ca. anderthalb Wochen). Am Ende bleibt „nur noch eine Grube“."], "belege": [["Epilog", "„Bei diesem Abriß …“"]]}, {"t": "Protokollstil", "text": ["Kursiv gesetzt, sachlich wie ein Fachtext, ohne Figuren und ohne Gefühle. Der Abriss läuft ab „wie bei allen anderen“ Abrissen."], "deutung": "Das Haus ist kein besonderer Ort mehr, sondern ein Fall unter vielen – die Kälte der Sprache macht den Verlust gerade spürbar."}, {"t": "Zahlen", "text": ["• ca. 900 m³ umbauter Raum", "• ca. 17 Lkw-Fahrten Schutt", "• Haupthaus „rund 500 Tonnen“, Badehaus „knapp 4 Tonnen“"], "deutung": "Alles, was im Roman Bedeutung hatte (Schrank, Treppe, Türen), wird zu Gewicht und Volumen."}, {"t": "Kreis zum Prolog", "text": ["Im Prolog entsteht der See nach der Eiszeit und ist nur „etwas Zeitweiliges“; jede Hohlform ist „nur dazu da“, wieder zugeschüttet zu werden. Im Epilog bleibt eine Grube, und „für einen kurzen Moment“ gleicht die Landschaft „wieder sich selbst“, bevor ein neues Haus gebaut wird."], "belege": [["Epilog", "„Bevor auf demselben Platz ein anderes Haus gebaut werden wird …“"], ["Prolog", "„… wie jede Hohlform war auch diese Rinne …“"]], "deutung": "Der Rahmen stellt die Menschengeschichte in die Erdgeschichte: Besitz, Recht und Erinnerung sind vorübergehend, die Landschaft bleibt."}]}, {"id": "b8", "title": "Beurteilung", "task": "AFB III", "short": "Unsere Bewertung", "intro": "Wir beziehen Stellung: Was lässt der Text offen, und wie bewerten wir es?", "kids": [{"t": "Opfer oder „unberechtigt“?", "pro": "Sie hat nichts Unrechtes getan, das Haus redlich bewohnt und verliert ihre Kindheit an Erben, die es nur verkaufen.", "contra": "Das Haus hat eine Vorgeschichte von Enteignungen; auch ihre Familie profitierte von einer früheren Enteignung (Architekt). Das Ufer kehrt zur „jüdischen Parzelle“ zurück.", "urteil": "Sie ist subjektiv Opfer, objektiv aber nur das letzte Glied in einer Kette. Der Roman verweigert bewusst eine einfache Opferrolle."}, {"t": "Recht vs. Gerechtigkeit", "pro": "„Rückgabe vor Entschädigung“ versucht, altes Unrecht rückgängig zu machen – das ist grundsätzlich gerecht.", "contra": "Das Recht fragt nicht nach gelebter Bindung („nicht streiterheblich“). Am Ende gewinnt nicht die Erinnerung, sondern der Markt: verkauft, abgerissen.", "urteil": "Rechtlich korrekt, menschlich unbefriedigend. Erpenbeck zeigt, dass Recht und Gerechtigkeit nicht dasselbe sind."}, {"t": "Abschied oder Festklammern?", "pro": "Das Putzen ist ein Ritual (Azteken: „heilige Handlung“), sie gibt am Ende den Ort frei und schließt ab.", "contra": "Sie bricht das Recht („verbotene Eigenmacht“), versteckt sich im Schrank und behält den Schlüssel.", "urteil": "Beides: Sie verabschiedet sich vom Haus, aber nicht von der Bindung – genau das sagt das Schlingen-Bild."}, {"t": "Ende: Trost oder Gleichgültigkeit?", "pro": "Die Landschaft „gleicht … wieder sich selbst“ – alles kehrt zum Ursprung zurück, ein ruhiger Schluss.", "contra": "Die Natur ist gleichgültig gegenüber den Menschen; „bevor ein anderes Haus gebaut werden wird“ – der Kreislauf von Besitz geht einfach weiter.", "urteil": "Für uns eher nüchtern als tröstlich: Der Roman relativiert alle Besitzansprüche, auch den der Enkelin."}, {"t": "Antwort auf die Leitfrage", "text": ["Wem gehört der Ort? <b>Rechtlich<\/b> den Erben, <b>emotional<\/b> der Enkelin, <b>auf Dauer<\/b> niemandem. Schon im Kapitel steht das Wort „Verliehen.“ – Besitz ist im Roman immer nur geliehen.", "Erpenbeck selbst sagt über Heimat, sie sei etwas, „das man wahrscheinlich erst bemerkt, wenn man es verloren hat“ (Interview mit der „Zeit“)."], "deutung": "Genau das passiert der Enkelin: Erst der Verlust macht ihr die Bindung bewusst – und unauflösbar."}]}], "rel": {"nodes": [["enk", "Enkelin", "die unberechtigte Eigenbesitzerin", "Hauptfigur. Verliert das Haus ihrer Kindheit nach der Wende, schleicht sich ein letztes Mal hinein und verabschiedet sich.", 0, 0], ["oma", "Großmutter", "die Schriftstellerin", "Aus dem sowjetischen Exil zurückgekehrt, lebte in der DDR im Haus. Nach ihrem Tod wird die Enkelin Miteigentümerin. Ihr Geruch (Pfefferminz, Kampfer) ist noch im Schrankzimmer.", -420, -210], ["vat", "Vater", "Sohn der Schriftstellerin", "Im Exil geboren, vier Jahre im Kinderheim. Verachtet „Natur“, lässt die Tochter als Miteigentümerin eintragen und fährt nach dem Rückgabeantrag nie wieder hin.", -450, 90], ["mann", "Ehemann", "", "„Du hast deine Zeit dort gehabt.“ – versteht ihre Bindung nicht.", -260, 330], ["kf", "Kinderfreund", "", "Begleitete mit ihr das Badehaus den Hang hinauf, half beim Ausräumen und entdeckte den Schwamm. Sie sieht ihn heimlich vom Fenster aus, trifft ihn aber nicht. Durch die „Schlingen“ „für immer“ mit ihr verbunden.", 170, 340], ["erb", "Erben der Frau des Architekten", "Erbengemeinschaft", "Leben im Westen (Österreich, Schweiz, Westdeutschland). Beantragen die Rückübertragung und lassen das Haus verkaufen.", 420, -210], ["mak", "Maklerin", "", "Verkauft das Haus als Ware („das bessere Ufer“, „Gruppe Albert Speer“), 6 % Provision. Führt Kunden durchs Haus, während die Enkelin im Schrank liegt.", 450, 90], ["neu", "Neue Eigentümer", "+ ihr Architekt", "Betreten das Haus nicht mehr, zeigen nur „auf den Platz“ – lassen es abreißen.", 470, 350], ["arch", "Architekt", "Vorgeschichte (frühere Kapitel)", "Baute das Haus. Seine Frau ist die Erblasserin. Im Roman ist er schon selbst Teil einer Kette von Enteignungen.", -30, -420]], "edges": [["oma", "enk", "vererbt ihr das Haus"], ["oma", "vat", "Mutter"], ["vat", "enk", "lässt sie eintragen"], ["mann", "enk", "„Du hast deine Zeit dort gehabt“"], ["kf", "enk", "Schlingen: „für immer aneinander“"], ["erb", "enk", "klagen auf Herausgabe"], ["erb", "mak", "beauftragen"], ["mak", "neu", "verkauft an"], ["arch", "erb", "Erben seiner Frau"], ["mak", "enk", "führt Kunden vorbei, während sie im Schrank liegt"]]}, "relP": {"arch": [0, -700], "oma": [-175, -490], "erb": [175, -490], "vat": [-215, -230], "mak": [200, -250], "enk": [0, 0], "mann": [-215, 260], "kf": [0, 350], "neu": [230, 350]}}, PRESENTER=false;
+const GROUPS={mensch:['Mensch & Ort','#2F5D4E'],recht:['Recht & Markt','#A3262E'],text:['Text & Bild','#2D6A88'],land:['Landschaft','#8A6A2F'],urteil:['Urteil','#13263A']};
+const GOF=['mensch','mensch','recht','recht','text','text','land','urteil'];
+const NS='http://www.w3.org/2000/svg', svg=document.getElementById('svg'), pi=document.getElementById('pi'), panel=document.getElementById('panel');
 const esc=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
 function el(t,a,p){const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e}
-function wrap(t,max){const w=t.split(' '),L=[];let c='';for(const x of w){if((c+' '+x).trim().length>max&&c){L.push(c);c=x}else c=(c+' '+x).trim()}if(c)L.push(c);return L}
-function box(p,x,y,w,txt,fs,opt){const g=el('g',{class:'node',tabindex:0,role:'button','aria-label':txt.join(' ')},p);
- const lh=fs*1.2, pad=opt.pad||14, h=Math.max(opt.minh||0,txt.length*lh+pad*2+(opt.extra||0)+(opt.bot||0));
- const r=el('rect',{x:x-w/2,y:y-h/2,width:w,height:h,rx:opt.rx||14,fill:opt.fill,stroke:opt.stroke||'none','stroke-width':opt.sw||0},g);
- const t0=y-h/2+pad+(opt.extra||0)+fs*0.9;
- txt.forEach((l,i)=>{const t=el('text',{x:x,y:t0+i*lh,'text-anchor':'middle','font-size':fs,'font-family':opt.ff||"'Public Sans',Arial,sans-serif",'font-weight':opt.fw||600,fill:opt.color||'#1C1916'},g);t.textContent=l});
- g._h=h;g._r=r;return g}
-/* ---------- layout ---------- */
-const N=D.branches.length, RX=640, RY=420, R2=300;
-const B=D.branches.map((b,k)=>{const a=(-90+k*360/N)*Math.PI/180;return {...b,k,a,x:RX*Math.cos(a),y:RY*Math.sin(a),c:COLORS[k%COLORS.length]}});
-B.forEach(b=>{const m=b.kids.length;
- if(Math.abs(b.x)<60){const h=Math.ceil(m/2);b.kids.forEach((kd,j)=>{const L=j<h,n=L?h:m-h,jj=L?j:j-h;kd.x=b.x+(L?-310:310);kd.y=b.y+(jj-(n-1)/2)*92+(b.y<0?-40:40)})}
- else{const sd=Math.sign(b.x);b.kids.forEach((kd,j)=>{kd.x=b.x+sd*340;kd.y=b.y+(j-(m-1)/2)*88})}});
-const gEdges=el('g',{},svg), gKids=el('g',{},svg), gBr=el('g',{},svg);
-const center=box(svg,0,0,330,wrap(D.center.title,20),30,{fill:'#1C1916',color:'#F3EDE3',ff:"'EB Garamond',Georgia,serif",fw:600,rx:20,pad:22,extra:0,bot:26});
-el('text',{x:0,y:center._h/2-18,'text-anchor':'middle','font-size':15,fill:'#E59A78','font-weight':600},center).textContent=D.center.sub;
-center.addEventListener('click',()=>go('c'));
-const brG=[],kidG=[],kidE=[],brE=[];
-B.forEach(b=>{
- const p=el('path',{d:`M0 0 Q ${b.x*0.55} ${b.y*0.15} ${b.x} ${b.y}`,fill:'none',stroke:b.c,'stroke-width':5,'stroke-linecap':'round',opacity:.55},gEdges);brE.push(p);
- const ke=[],kg=[];
- b.kids.forEach((kd,j)=>{
-  const mx=(b.x+kd.x)/2;const l=el('path',{d:`M${b.x} ${b.y} C ${mx} ${b.y}, ${mx} ${kd.y}, ${kd.x} ${kd.y}`,fill:'none',stroke:b.c,'stroke-width':2.5,opacity:.6},gEdges);ke.push(l);
-  const g=box(gKids,kd.x,kd.y,230,wrap(kd.t,20),19,{fill:'#FFFFFF',stroke:b.c,sw:2.5,rx:12,pad:12});
-  g.addEventListener('click',e=>{e.stopPropagation();go(b.id+'-'+j)});kg.push(g)});
- kidE.push(ke);kidG.push(kg);
- const g=box(gBr,b.x,b.y,290,wrap(b.title,19),25,{fill:b.c,color:'#FFFFFF',rx:16,pad:16,extra:30,bot:26});
- const sl=el('text',{x:b.x,y:b.y+g._h/2-16,'text-anchor':'middle','font-size':15,fill:'#FFFFFFe6','font-style':'italic'},g);sl.textContent=b.short;
- el('circle',{cx:b.x-145+26,cy:b.y-g._h/2+22,r:15,fill:'#FFFFFF'},g);
- const nt=el('text',{x:b.x-145+26,y:b.y-g._h/2+28,'text-anchor':'middle','font-size':17,'font-weight':700,fill:b.c},g);nt.textContent=b.k+1;
- const tt=el('text',{x:b.x+12,y:b.y-g._h/2+28,'text-anchor':'middle','font-size':14,'font-weight':600,fill:'#FFFFFFdd'},g);tt.textContent=b.task;
- g.addEventListener('click',e=>{e.stopPropagation();go(b.id)});brG.push(g)});
-/* relations */
-const gRel=el('g',{style:'display:none'},svg);
-const RN={};D.rel.nodes.forEach(n=>RN[n[0]]=n);
-D.rel.edges.forEach(([a,b,l])=>{const A=RN[a],Bn=RN[b];el('line',{x1:A[4],y1:A[5],x2:Bn[4],y2:Bn[5],stroke:'#9A4128','stroke-width':2.5,opacity:.7},gRel);
- const mx=(A[4]+Bn[4])/2,my=(A[5]+Bn[5])/2,L=wrap(l,22);const w=Math.max(...L.map(s=>s.length))*9.4+20,h=L.length*21+12;
- el('rect',{x:mx-w/2,y:my-h/2,width:w,height:h,rx:8,fill:'#FBF8F3',stroke:'#D8CEC0'},gRel);
- L.forEach((s,i)=>{el('text',{x:mx,y:my-h/2+21+i*21,'text-anchor':'middle','font-size':17,'font-style':'italic',fill:'#5F574E'},gRel).textContent=s})});
-const relG={};
-D.rel.nodes.forEach(n=>{const main=n[0]==='enk';const L=wrap(n[1],18);
- const g=box(gRel,n[4],n[5],main?280:250,L,main?27:22,{fill:main?'#1C1916':'#FFFFFF',color:main?'#F3EDE3':'#1C1916',stroke:'#9A4128',sw:main?0:2,rx:14,pad:14,extra:n[2]?0:0});
- if(n[2]){g._r.setAttribute('height',+g._r.getAttribute('height')+20);el('text',{x:n[4],y:+g._r.getAttribute('y')+(+g._r.getAttribute('height'))-12,'text-anchor':'middle','font-size':16,fill:main?'#E59A78':'#5F574E'},g).textContent=n[2]}
- g.addEventListener('click',e=>{e.stopPropagation();showRel(n[0])});relG[n[0]]=g});
-/* ---------- view box animation ---------- */
-let vb=[-1000,-700,2000,1400],anim=null;
-function setVB(t){const st=vb.slice(),t0=performance.now();cancelAnimationFrame(anim);
- const r=svg.getBoundingClientRect(),ar=r.width/Math.max(1,r.height);let [x,y,w,h]=t;
- if(w/h<ar){const nw=h*ar;x-=(nw-w)/2;w=nw}else{const nh=w/ar;y-=(nh-h)/2;h=nh}const tg=[x,y,w,h];
- const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;if(RM){vb=tg;svg.setAttribute('viewBox',vb.join(' '));return}
- const f=n=>{const p=Math.min(1,(n-t0)/450),e=p<.5?2*p*p:1-Math.pow(-2*p+2,2)/2;vb=st.map((v,i)=>v+(tg[i]-v)*e);svg.setAttribute('viewBox',vb.join(' '));if(p<1)anim=requestAnimationFrame(f)};anim=requestAnimationFrame(f)}
-function bbox(pts,m){const xs=pts.map(p=>p[0]),ys=pts.map(p=>p[1]);return [Math.min(...xs)-m,Math.min(...ys)-m,Math.max(...xs)-Math.min(...xs)+2*m,Math.max(...ys)-Math.min(...ys)+2*m]}
-const ALL=bbox([[0,0],...B.map(b=>[b.x,b.y])],185);
-/* ---------- sequence & state ---------- */
-const SEQ=['c'];B.forEach(b=>{SEQ.push(b.id);b.kids.forEach((_,j)=>SEQ.push(b.id+'-'+j))});
-let cur='c',view='map',showNotes=PRESENTER;
-function focus(bi,ki){B.forEach((b,k)=>{const on=bi===null||bi===k;brG[k].style.opacity=on?1:.18;brE[k].style.opacity=on?.55:.12;
-  kidG[k].forEach((g,j)=>{const vis=bi===k;g.style.opacity=vis?1:0;g.style.pointerEvents=vis?'auto':'none';g._r.setAttribute('stroke-width',(vis&&ki===j)?6:2.5)});
-  kidE[k].forEach(l=>l.style.opacity=bi===k?.6:0)});
- center.style.opacity=bi===null?1:.35;
- if(bi===null)setVB(ALL);else{const b=B[bi];setVB(bbox([[b.x,b.y],...b.kids.map(k=>[k.x,k.y])],170))}}
-function go(id,noHash){if(view!=='map')setView('map',true);cur=id;
- if(id==='c'){focus(null,null);renderCenter()}else{const [bid,kj]=id.split('-');const bi=B.findIndex(b=>b.id===bid);if(bi<0)return go('c');
-  if(kj===undefined){focus(bi,null);renderBranch(bi)}else{focus(bi,+kj);renderKid(bi,+kj)}}
- if(!noHash)try{history.replaceState(null,'','#'+id)}catch(e){}
- panel.scrollTop=0;document.body.classList.remove('collapsed')}
+const cv=document.createElement('canvas').getContext('2d');
+function tw(t,font){cv.font=font;return cv.measureText(t).width}
+function wrapW(t,font,max){const w=t.split(' '),L=[];let c='';for(const x of w){const n=c?c+' '+x:x;if(c&&tw(n,font)>max){L.push(c);c=x}else c=n}if(c)L.push(c);return L}
+const F={br:'600 22px "Schibsted Grotesk", system-ui, Arial, sans-serif',q:'italic 400 15px Literata, Georgia, serif',kid:'500 18px "Schibsted Grotesk", system-ui, Arial, sans-serif',
+ c:'600 30px Literata, Georgia, serif',cs:'400 15px "Schibsted Grotesk", system-ui, Arial, sans-serif',rn:'600 23px "Schibsted Grotesk", system-ui, Arial, sans-serif',rs:'italic 400 16px Literata, Georgia, serif',rl:'italic 400 18px Literata, Georgia, serif'};
+function txt(p,x,y,s,font,fill,anchor){const m=font.match(/^(italic )?(\d+) ([\d.]+)px (.*)$/);const t=el('text',{x,y,fill,'font-size':m[3],'font-weight':m[2],'font-family':m[4],'text-anchor':anchor||'start'},p);if(m[1])t.setAttribute('font-style','italic');t.textContent=s;return t}
+let MODE={},L,B,brNodes=[],kidNodes=[],kidEdges=[],brEdges=[],centerG,relG={},relLayer,mapLayers;
+const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
+function intersects(a,b,m){m=m||0;return a.x<b.x+b.w+m&&b.x<a.x+a.w+m&&a.y<b.y+b.h+m&&b.y<a.y+a.h+m}
+function build(){
+ const sr=document.getElementById('stage').getBoundingClientRect();const ar=sr.width/Math.max(1,sr.height);
+ MODE={ar,compact:sr.width<640,portrait:ar<0.95};
+ const cs=MODE.compact;
+ F.br=cs?'600 28px "Schibsted Grotesk", system-ui, Arial, sans-serif':'600 22px "Schibsted Grotesk", system-ui, Arial, sans-serif';
+ F.kid=cs?'500 22px "Schibsted Grotesk", system-ui, Arial, sans-serif':'500 18px "Schibsted Grotesk", system-ui, Arial, sans-serif';
+ const BRL=cs?27*1.25:27, KL=cs?28:23;
+ svg.innerHTML='';brNodes=[];kidNodes=[];kidEdges=[];brEdges=[];relG={};
+ const gTopo=el('g',{class:'layer',id:'topo'},svg), gE=el('g',{class:'layer'},svg), gK=el('g',{class:'layer'},svg), gB=el('g',{class:'layer'},svg), gC=el('g',{class:'layer'},svg);
+ relLayer=el('g',{class:'layer gone'},svg);mapLayers=[gTopo,gE,gK,gB,gC];
+ /* center: lake */
+ const cl=wrapW(D.center.title,F.c,300), cw=Math.max(...cl.map(s=>tw(s,F.c)))+130, ch=cl.length*36+70;
+ centerG=el('g',{class:'node',tabindex:0,role:'button','aria-label':D.center.title},gC);
+ const blob=[];for(let i=0;i<=48;i++){const a=i/48*Math.PI*2,r=1+0.045*Math.sin(3*a+.6)+0.03*Math.sin(5*a+1.9);blob.push([(cw/2)*r*Math.cos(a),(ch/2)*r*Math.sin(a)])}
+ el('path',{class:'bg',d:'M'+blob.map(p=>p[0].toFixed(1)+' '+p[1].toFixed(1)).join(' L')+'Z',fill:'#2D6A88'},centerG);
+ cl.forEach((s,i)=>txt(centerG,0,-ch/2+48+i*36,s,F.c,'#FFFFFF','middle'));
+ txt(centerG,0,ch/2-26,D.center.sub,F.cs,'#D6E6EE','middle');
+ centerG._box={x:-cw/2*1.08,y:-ch/2*1.08,w:cw*1.08,h:ch*1.08};
+ centerG.addEventListener('click',e=>{e.stopPropagation();go('c')});
+ /* contours */
+ for(let k=1;k<=11;k++){const pts=[];for(let i=0;i<=72;i++){const a=i/72*Math.PI*2,rr=1+0.06*Math.sin(3*a+k*.7)+0.04*Math.sin(5*a+k*1.3)+0.025*Math.sin(8*a+k);pts.push([(cw/2+k*95)*rr*Math.cos(a)*1.18,(ch/2+k*72)*rr*Math.sin(a)])}
+  el('path',{d:'M'+pts.map(p=>p[0].toFixed(1)+' '+p[1].toFixed(1)).join(' L')+'Z',fill:'none',stroke:'#13263A','stroke-opacity':k%4===0?.11:.06,'stroke-width':k%4===0?1.6:1.1},gTopo)}
+ /* branches: measure */
+ B=D.branches.map((b,k)=>{const g=GOF[k],c=GROUPS[g][1];const tl=wrapW(b.title,F.br,cs?210:230),ql=cs?[]:wrapW(b.short,F.q,230);
+  const w=Math.max(...tl.map(s=>tw(s,F.br)),...ql.map(s=>tw(s,F.q)))+(cs?54:46)+26, h=16+tl.length*BRL+(ql.length?4+ql.length*20:0)+14;return {...b,k,g,c,tl,ql,w,h,BRL}});
+ /* place on ellipse, grow until no overlap */
+ let RY=250,RX=RY*Math.max(.8,Math.min(1.75,ar*1.05));
+ for(let it=0;it<40;it++){B.forEach(b=>{const a=(-90+b.k*360/B.length)*Math.PI/180;b.a=a;b.x=RX*Math.cos(a);b.y=RY*Math.sin(a);b.box={x:b.x-b.w/2,y:b.y-b.h/2,w:b.w,h:b.h}});
+  let bad=false;B.forEach((b,i)=>{if(intersects(b.box,centerG._box,40))bad=true;B.forEach((o,j)=>{if(j>i&&intersects(b.box,o.box,36))bad=true})});if(!bad)break;RX*=1.04;RY*=1.04}
+ /* kids layout per branch */
+ B.forEach(b=>{const kids=b.kids.map(kd=>{const l=wrapW(kd.t,F.kid,cs?240:210);return {...kd,l,w:Math.max(...l.map(s=>tw(s,F.kid)))+44,h:l.length*KL+22}});
+  if(MODE.portrait){let y=b.y+b.h/2+48;const x0=b.x-b.w/2+28;kids.forEach(k=>{k.side=0;k.x=x0;k.y=y;y+=k.h+14});b.lk=kids;return}
+  const vert=Math.abs(Math.cos(b.a))<0.35, gap=16;
+  const place=(arr,side,cy)=>{const tot=arr.reduce((s,k)=>s+k.h,0)+gap*(arr.length-1);let y=cy-tot/2;
+   arr.forEach(k=>{k.side=side;k.x=side>0?b.x+b.w/2+70:b.x-b.w/2-70-k.w;k.y=y;y+=k.h+gap})};
+  if(vert){const h=Math.ceil(kids.length/2),Lk=kids.slice(0,h),Rk=kids.slice(h);const dir=Math.sign(Math.sin(b.a));
+   place(Lk,-1,b.y+dir*30);place(Rk,1,b.y+dir*30)}
+  else place(kids,Math.sign(Math.cos(b.a)),b.y);
+  b.lk=kids});
+ /* draw edges */
+ B.forEach(b=>{const p=el('path',{d:`M0 0 C ${b.x*0.35} ${b.y*0.9}, ${b.x*0.7} ${b.y}, ${b.x} ${b.y}`,fill:'none',stroke:b.c,'stroke-width':3,'stroke-opacity':.55,'stroke-linecap':'round'},gE);brEdges.push(p);
+  const ke=el('g',{class:'layer gone'},gE);kidEdges.push(ke);
+  b.lk.forEach(k=>{const ey=k.y+k.h/2;
+   if(k.side===0){const sx=b.x-b.w/2+12,sy=b.y+b.h/2;el('path',{d:`M${sx} ${sy} L ${sx} ${ey-10} Q ${sx} ${ey}, ${sx+10} ${ey} L ${k.x} ${ey}`,fill:'none',stroke:b.c,'stroke-width':1.6,'stroke-opacity':.7},ke);el('circle',{cx:k.x,cy:ey,r:4,fill:b.c},ke);return}
+   const sx=k.side>0?b.x+b.w/2:b.x-b.w/2,ex=k.side>0?k.x:k.x+k.w,mx=(sx+ex)/2;
+   el('path',{d:`M${sx} ${b.y} C ${mx} ${b.y}, ${mx} ${ey}, ${ex} ${ey}`,fill:'none',stroke:b.c,'stroke-width':1.6,'stroke-opacity':.7},ke);
+   el('circle',{cx:ex,cy:ey,r:4,fill:b.c},ke)})});
+ /* draw kids */
+ B.forEach(b=>{const gk=el('g',{class:'layer gone'},gK);kidNodes.push(gk);
+  b.lk.forEach((k,j)=>{const g=el('g',{class:'node',tabindex:-1,role:'button','aria-label':k.t},gk);
+   el('rect',{class:'bg',x:k.x,y:k.y,width:k.w,height:k.h,rx:7,fill:'#FBFCF9',stroke:b.c,'stroke-width':1.2,'stroke-opacity':.5},g);
+   k.l.forEach((s,i)=>txt(g,k.x+22,k.y+11+(cs?21:17)+i*KL,s,F.kid,'#13263A'));
+   g._box={x:k.x,y:k.y,w:k.w,h:k.h};k.g=g;
+   g.addEventListener('click',e=>{e.stopPropagation();go(b.id+'-'+j)})})});
+ /* draw branches */
+ B.forEach(b=>{const g=el('g',{class:'node',tabindex:0,role:'button','aria-label':(b.k+1)+'. '+b.title},gB);
+  const x0=b.x-b.w/2,y0=b.y-b.h/2;
+  el('rect',{class:'bg',x:x0,y:y0,width:b.w,height:b.h,rx:11,fill:'#FBFCF9',stroke:b.c,'stroke-width':1.6},g);
+  const rr=cs?17:13,tx=x0+(cs?54:46);
+  el('circle',{cx:x0+(cs?28:24),cy:y0+16+(cs?16:13),r:rr,fill:b.c},g);txt(g,x0+(cs?28:24),y0+16+(cs?23:18.5),String(b.k+1),(cs?'700 19px':'700 15px')+' "Schibsted Grotesk", system-ui, Arial, sans-serif','#FFFFFF','middle');
+  b.tl.forEach((s,i)=>txt(g,tx,y0+16+(cs?26:20)+i*b.BRL,s,F.br,'#13263A'));
+  b.ql.forEach((s,i)=>txt(g,tx,y0+16+b.tl.length*b.BRL+4+14+i*20,s,F.q,'#41505E'));
+  g._box=b.box;b.gNode=g;brNodes.push(g);
+  g.addEventListener('click',e=>{e.stopPropagation();go(b.id)})});
+ buildRel();
+}
+function buildRel(){const R=D.rel;relLayer.innerHTML='';const N={};
+ R.nodes.forEach(n=>{const main=n[0]==='enk';const f=main?'600 24px "Schibsted Grotesk", system-ui, Arial, sans-serif':F.rn;const tl=wrapW(n[1],f,220),sl=n[2]?wrapW(n[2],F.rs,220):[];
+  const w=Math.max(...tl.map(s=>tw(s,f)),...sl.map(s=>tw(s,F.rs)))+36,h=16+tl.length*(main?29:25)+(sl.length?4+sl.length*19:0)+14;const pp=MODE.portrait&&D.relP?D.relP[n[0]]:[n[4],n[5]];N[n[0]]={n,x:pp[0],y:pp[1],w,h,tl,sl,main,f}});
+ const NB=Object.values(N).map(o=>({x:o.x-o.w/2,y:o.y-o.h/2,w:o.w,h:o.h}));
+ const gE=el('g',{},relLayer),gL=el('g',{},relLayer),gN=el('g',{},relLayer);relLayer._labels=[];relLayer._nodes=[];
+ R.edges.forEach(([a,b,l])=>{const A=N[a],Bn=N[b];el('line',{x1:A.x,y1:A.y,x2:Bn.x,y2:Bn.y,stroke:'#41505E','stroke-width':1.4,'stroke-opacity':.55},gE);
+  const ll=wrapW(l,F.rl,190),w=Math.max(...ll.map(s=>tw(s,F.rl)))+22,h=ll.length*22+12;let mx,my,lab;
+  for(const t of [.5,.42,.58,.34,.66,.27,.73]){mx=A.x+(Bn.x-A.x)*t;my=A.y+(Bn.y-A.y)*t;lab={x:mx-w/2,y:my-h/2,w,h};if(![...NB,...relLayer._labels].some(o=>intersects(lab,o,6)))break}
+  relLayer._labels.push(lab);
+  el('rect',{x:lab.x,y:lab.y,width:w,height:h,rx:h/2>14?10:h/2,fill:'#EDF0EA',stroke:'#CDD5CC'},gL);
+  ll.forEach((s,i)=>txt(gL,mx,lab.y+6+17+i*22,s,F.rl,'#41505E','middle'))});
+ Object.values(N).forEach(o=>{const g=el('g',{class:'node',tabindex:0,role:'button','aria-label':o.n[1]},gN);const x0=o.x-o.w/2,y0=o.y-o.h/2;
+  el('rect',{class:'bg',x:x0,y:y0,width:o.w,height:o.h,rx:9,fill:o.main?'#2D6A88':'#FBFCF9',stroke:o.main?'none':'#13263A','stroke-width':1.2,'stroke-opacity':.35},g);
+  o.tl.forEach((s,i)=>txt(g,o.x,y0+16+(o.main?22:18)+i*(o.main?29:25),s,o.f,o.main?'#FFFFFF':'#13263A','middle'));
+  o.sl.forEach((s,i)=>txt(g,o.x,y0+16+o.tl.length*(o.main?29:25)+4+13+i*19,s,F.rs,o.main?'#D6E6EE':'#41505E','middle'));
+  g._box={x:x0,y:y0,w:o.w,h:o.h};relLayer._nodes.push(g._box);relG[o.n[0]]=g;
+  g.addEventListener('click',e=>{e.stopPropagation();showRel(o.n[0])})});
+ relLayer._N=N}
+/* ---------- view box ---------- */
+let vb=null,anim=null;
+function fitBox(bx,pad){const r=svg.getBoundingClientRect(),ar=r.width/Math.max(1,r.height);let x=bx.x-pad,y=bx.y-pad,w=bx.w+2*pad,h=bx.h+2*pad;
+ if(w/h<ar){const nw=h*ar;x-=(nw-w)/2;w=nw}else{const nh=w/ar;y-=(nh-h)/2;h=nh}return [x,y,w,h]}
+function setVB(t,instant){cancelAnimationFrame(anim);if(!vb||RM||instant){vb=t;svg.setAttribute('viewBox',t.join(' '));return}
+ const st=vb.slice(),t0=performance.now();const f=n=>{const p=Math.min(1,(n-t0)/480),e=1-Math.pow(1-p,3);vb=st.map((v,i)=>v+(t[i]-v)*e);svg.setAttribute('viewBox',vb.join(' '));if(p<1)anim=requestAnimationFrame(f)};anim=requestAnimationFrame(f)}
+function union(bs){const x=Math.min(...bs.map(b=>b.x)),y=Math.min(...bs.map(b=>b.y));return {x,y,w:Math.max(...bs.map(b=>b.x+b.w))-x,h:Math.max(...bs.map(b=>b.y+b.h))-y}}
+const padFor=()=>innerWidth<860?18:46;
+function viewOverview(){return fitBox(union([centerG._box,...B.map(b=>b.box)]),padFor())}
+function viewBranch(bi){const b=B[bi];return fitBox(union([b.box,...b.lk.map(k=>k.g._box)]),padFor())}
+function viewRel(){return fitBox(union([...relLayer._nodes,...relLayer._labels]),padFor())}
+/* ---------- state ---------- */
+const SEQ=['c'];D.branches.forEach((b,k)=>{SEQ.push(b.id);b.kids.forEach((_,j)=>SEQ.push(b.id+'-'+j))});
+let cur='c',view='map',notesOn=PRESENTER,focusB=null;
+function applyFocus(bi,kj,instant){focusB=bi;
+ B.forEach((b,k)=>{const on=bi===null||bi===k;b.gNode.classList.toggle('gone',!on);brEdges[k].classList.toggle('gone',bi!==null);brEdges[k].classList.add('layer');
+  kidNodes[k].classList.toggle('gone',bi!==k);kidEdges[k].classList.toggle('gone',bi!==k);
+  b.lk.forEach((kd,j)=>{const r=kd.g.querySelector('.bg');const sel=bi===k&&kj===j;r.setAttribute('stroke-width',sel?2.6:1.2);r.setAttribute('stroke-opacity',sel?1:.5);r.setAttribute('fill',sel?'#FFFFFF':'#FBFCF9');kd.g.setAttribute('tabindex',bi===k?0:-1)})});
+ centerG.classList.toggle('gone',bi!==null);document.getElementById('topo').classList.toggle('faint',bi!==null);
+ setVB(bi===null?viewOverview():viewBranch(bi),instant)}
+function go(id,o){o=o||{};if(view!=='map')setView('map',true);if(!SEQ.includes(id))id='c';cur=id;
+ if(id==='c'){applyFocus(null,null,o.instant);renderCenter()}else{const [bid,kj]=id.split('-');const bi=D.branches.findIndex(b=>b.id===bid);
+  if(kj===undefined){applyFocus(bi,null,o.instant);renderBranch(bi)}else{applyFocus(bi,+kj,o.instant);renderKid(bi,+kj)}}
+ if(!o.noHash)try{history.replaceState(null,'','#'+id)}catch(e){}
+ panel.scrollTop=0;if(o.open!==false)document.body.classList.remove('min');syncSheet()}
 function step(d){if(view==='rel')return;const i=SEQ.indexOf(cur);go(SEQ[Math.max(0,Math.min(SEQ.length-1,i+d))])}
 /* ---------- panel ---------- */
-function notesBox(n){if(!PRESENTER||!showNotes||!n)return'';return `<div class="notes"><h4>Sprechnotiz</h4><ul>${n.map(([k,v])=>`<li><b>${esc(k)}</b> – ${esc(v)}</li>`).join('')}</ul></div>`}
-function pnav(){const i=SEQ.indexOf(cur);const lab=id=>{if(id==='c')return'Start';const [b,k]=id.split('-');const B_=B.find(x=>x.id===b);return k===undefined?(B_.k+1)+'. '+B_.title:B_.kids[+k].t};
- return `<div class="pnav">${i>0?`<button onclick="step(-1)">◀ ${esc(lab(SEQ[i-1]))}</button>`:''}${i<SEQ.length-1?`<button onclick="step(1)">${esc(lab(SEQ[i+1]))} ▶</button>`:''}</div>`}
-const foot=`<footer>Deutsch GK Q2 · Jenny Erpenbeck, „Heimsuchung“ · Gruppe 8. Zitate nach der Kursausgabe (alte Rechtschreibung wie im Original).</footer>`;
+const P=t=>(t.startsWith('• ')?null:t);
+function paras(arr,c){let h='',ul=[];const flush=()=>{if(ul.length){h+=`<ul class="dots" style="--c:${c}">${ul.map(x=>`<li>${x}</li>`).join('')}</ul>`;ul=[]}};
+ arr.forEach(t=>{if(t.startsWith('• '))ul.push(t.slice(2));else{flush();h+=`<p>${t}</p>`}});flush();return h}
+function notesBlk(n){if(!PRESENTER||!notesOn||!n)return'';return `<div class="blk notes"><p class="lbl">Sprechnotiz</p><ul>${n.map(([k,v])=>`<li><b>${esc(k)}</b> – ${esc(v)}</li>`).join('')}</ul></div>`}
+function label(id){if(id==='c')return['Start','Übersicht'];const [b,k]=id.split('-');const br=D.branches.find(x=>x.id===b),n=D.branches.indexOf(br)+1;return k===undefined?['Ast '+n,br.title]:['Ast '+n,br.kids[+k].t]}
+function pnav(){const i=SEQ.indexOf(cur);let h='<div class="pnav">';if(i>0){const [a,b]=label(SEQ[i-1]);h+=`<button onclick="step(-1)"><small>Zurück zu ${esc(a)}</small>${esc(b)}</button>`}
+ if(i<SEQ.length-1){const [a,b]=label(SEQ[i+1]);h+=`<button class="nx" onclick="step(1)"><small>Weiter zu ${esc(a)}</small>${esc(b)}</button>`}return h+'</div>'}
+const FOOT=`<p class="foot">Deutsch-Grundkurs Q2, Gruppe 8. Zitate nach der Kursausgabe, in der alten Rechtschreibung des Originals.</p>`;
 function renderCenter(){const c=D.center;
- panel.innerHTML=`<p class="crumb">Start</p><h2>${esc(c.title)}</h2>${c.text.map(t=>`<p>${t}</p>`).join('')}${notesBox(c.notes)}
- <p style="margin-top:14px"><b>Die acht Äste</b> – in dieser Reihenfolge stellen wir vor:</p><div class="legend">${B.map(b=>`<button class="nb" style="background:${b.c}" onclick="go('${b.id}')">${b.k+1}. ${esc(b.title)}</button>`).join('')}</div>
- <p style="font-size:13.5px;color:var(--mut)">Tipp: Unter „Beziehungen“ siehst du, wie die Figuren zusammenhängen.</p>${pnav()}${foot}`}
+ pi.innerHTML=`<p class="crumb" style="color:var(--lake)">Kapitel und Epilog</p><h2>${esc(c.title)}</h2>${paras(c.text,'#2D6A88')}${notesBlk(c.notes)}
+ <p class="lbl" style="margin-top:20px">Die acht Äste, in der Reihenfolge unseres Vortrags</p>
+ <div class="branches">${B.map(b=>`<button class="brb" style="--c:${b.c}" onclick="go('${b.id}')"><em>${b.k+1}</em><span>${esc(b.title)}<small>${esc(b.short)}</small></span></button>`).join('')}</div>
+ <p style="font-size:14.5px;color:var(--ink2)">Unter „Beziehungen“ siehst du, wie die Figuren zusammenhängen.</p>${pnav()}${FOOT}`}
+function crumb(b){return `<p class="crumb" style="color:${b.c}">Ast ${b.k+1}: ${esc(b.title)} <span class="pill">${esc(b.task)}</span></p>`}
 function renderBranch(bi){const b=B[bi];
- panel.innerHTML=`<p class="crumb" style="color:${b.c}">Ast ${b.k+1} <span class="tag" style="background:${b.c}">${esc(b.task)}</span></p><h2>${esc(b.title)}</h2><p>${b.intro}</p>${notesBox(b.notes)}
- <div class="kids">${b.kids.map((k,j)=>`<button class="kid" style="--c:${b.c}" onclick="go('${b.id}-${j}')">${esc(k.t)}</button>`).join('')}</div>${pnav()}${foot}`}
-function renderKid(bi,j){const b=B[bi],k=b.kids[j];let h=`<p class="crumb" style="color:${b.c}">Ast ${b.k+1} · ${esc(b.title)} <span class="tag" style="background:${b.c}">${esc(b.task)}</span></p><h2>${esc(k.t)}</h2>`;
- if(k.flag)h+=`<div class="box flag"><h4>⚠ Hinweis</h4>${esc(k.flag)}</div>`;
- if(k.text)h+=k.text.map(t=>`<p>${t}</p>`).join('');
- if(k.pro)h+=`<div class="box pro"><h4>Dafür spricht</h4>${esc(k.pro)}</div>`;
- if(k.contra)h+=`<div class="box con"><h4>Dagegen spricht</h4>${esc(k.contra)}</div>`;
- if(k.urteil)h+=`<div class="box urt"><h4>Unser Urteil</h4>${esc(k.urteil)}</div>`;
- if(k.belege)h+=`<div class="box bel"><h4>Belege</h4><ul>${k.belege.map(([kp,z])=>`<li>${esc(kp)}, ${esc(z)}</li>`).join('')}</ul></div>`;
- if(k.deutung)h+=`<div class="box deut"><h4>Deutung</h4>${esc(k.deutung)}</div>`;
- h+=`<p style="margin-top:12px"><a href="#${b.id}" onclick="go('${b.id}');return false" style="color:${b.c};font-weight:600">↑ Zurück zu Ast ${b.k+1}</a></p>`+pnav()+foot;panel.innerHTML=h}
-function showRel(id){const n=RN[id];Object.entries(relG).forEach(([k,g])=>g._r.setAttribute('stroke-width',k===id?6:(k==='enk'?0:2)));
- const es=D.rel.edges.filter(e=>e[0]===id||e[1]===id).map(([a,b,l])=>`<li><b>${esc(RN[a===id?b:a][1])}</b>: ${esc(l)}</li>`).join('');
- panel.innerHTML=`<p class="crumb">Beziehungen</p><h2>${esc(n[1])}</h2>${n[2]?`<p style="color:var(--mut);margin-top:-6px">${esc(n[2])}</p>`:''}<p>${esc(n[3])}</p>${es?`<div class="box bel"><h4>Verbindungen</h4><ul>${es}</ul></div>`:''}${foot}`;
- panel.scrollTop=0;document.body.classList.remove('collapsed')}
-function relIntro(){panel.innerHTML=`<p class="crumb">Beziehungen</p><h2>Figurenkonstellation</h2><p>Links steht die Familie, aus der die Enkelin kommt, rechts die Gegenseite, die das Haus zurückbekommt und verkauft. Oben steht die Vorgeschichte.</p><p>Klicke auf eine Figur, um mehr zu erfahren.</p><div class="box flag"><h4>⚠ Hinweis</h4>Der Architekt selbst tritt in unserem Kapitel nicht auf. Seine Rolle stammt aus früheren Kapiteln.</div>${foot}`}
-function setView(v,quiet){view=v;document.getElementById('tMap').classList.toggle('on',v==='map');document.getElementById('tRel').classList.toggle('on',v==='rel');
- const m=v==='map';[gEdges,gKids,gBr,center].forEach(g=>g.style.display=m?'':'none');gRel.style.display=m?'none':'';
- if(!m){const pts=D.rel.nodes.map(n=>[n[4],n[5]]);setVB(bbox(pts,190));relIntro();try{history.replaceState(null,'','#beziehungen')}catch(e){}}
- else if(!quiet)go(cur)}
-document.getElementById('tMap').onclick=()=>setView('map');document.getElementById('tRel').onclick=()=>setView('rel');
+ pi.innerHTML=`${crumb(b)}<h2>${esc(b.short)}</h2><p>${b.intro}</p>${notesBlk(b.notes)}
+ <div class="kids">${b.kids.map((k,j)=>`<button class="kid" style="--c:${b.c}" onclick="go('${b.id}-${j}')"><i></i>${esc(k.t)}${k.flag?'<small>Hinweis</small>':''}</button>`).join('')}</div>${pnav()}${FOOT}`}
+function renderKid(bi,j){const b=B[bi],k=b.kids[j];let h=crumb(b)+`<h2>${esc(k.t)}</h2>`;
+ if(k.flag)h+=`<div class="blk flag"><p class="lbl">Achtung</p><p>${esc(k.flag)}</p></div>`;
+ if(k.text)h+=paras(k.text,b.c);
+ if(k.pro||k.contra)h+=`<div class="blk pc">${k.pro?`<div class="pro"><p class="lbl">Dafür spricht</p><p>${esc(k.pro)}</p></div>`:''}${k.contra?`<div class="con"><p class="lbl">Dagegen spricht</p><p>${esc(k.contra)}</p></div>`:''}</div>`;
+ if(k.urteil)h+=`<div class="blk verdict"><p class="lbl">Unser Urteil</p><p>${esc(k.urteil)}</p></div>`;
+ if(k.deutung)h+=`<div class="blk deut" style="--c:${b.c}"><p class="lbl">Deutung</p><p>${esc(k.deutung)}</p></div>`;
+ if(k.belege)h+=`<div class="blk bel"><p class="lbl">Belege</p><ol>${k.belege.map(([kp,z])=>`<li>${esc(kp)}, ${esc(z)}</li>`).join('')}</ol></div>`;
+ h+=`<a class="up" style="--c:${b.c}" href="#${b.id}" onclick="go('${b.id}');return false">Zurück zu Ast ${b.k+1}</a>`+pnav()+FOOT;pi.innerHTML=h}
+function relIntro(){pi.innerHTML=`<p class="crumb" style="color:var(--lake)">Beziehungen</p><h2>Wer gehört zu wem?</h2><p>Links steht die Familie, aus der die Enkelin kommt. Rechts steht die Gegenseite, die das Haus zurückbekommt und verkauft. Oben steht die Vorgeschichte.</p><p>Wähle eine Figur, um mehr über sie zu lesen.</p><div class="blk flag"><p class="lbl">Achtung</p><p>Der Architekt tritt in unserem Kapitel nicht selbst auf. Seine Rolle kennen wir aus früheren Kapiteln.</p></div>${FOOT}`}
+function showRel(id){const N=relLayer._N,o=N[id];Object.entries(relG).forEach(([k,g])=>{const r=g.querySelector('.bg');if(k!=='enk'){r.setAttribute('stroke-width',k===id?2.6:1.2);r.setAttribute('stroke-opacity',k===id?1:.35)}});
+ const es=D.rel.edges.filter(e=>e[0]===id||e[1]===id).map(([a,b,l])=>`<li><b>${esc(N[a===id?b:a].n[1])}</b>: ${esc(l)}</li>`).join('');
+ pi.innerHTML=`<p class="crumb" style="color:var(--lake)">Beziehungen</p><h2>${esc(o.n[1])}</h2>${o.n[2]?`<p style="color:var(--ink2);font-style:italic;margin-top:-6px">${esc(o.n[2])}</p>`:''}<p>${esc(o.n[3])}</p>${es?`<div class="blk"><p class="lbl">Verbindungen</p><ul class="dots" style="--c:#2D6A88">${es}</ul></div>`:''}${FOOT}`;
+ panel.scrollTop=0;document.body.classList.remove('min');syncSheet()}
+function setView(v,quiet){view=v;document.getElementById('vMap').setAttribute('aria-pressed',v==='map');document.getElementById('vRel').setAttribute('aria-pressed',v==='rel');
+ mapLayers.forEach(g=>g.classList.toggle('gone',v!=='map'));relLayer.classList.toggle('gone',v!=='rel');document.getElementById('legend').style.visibility=v==='map'?'visible':'hidden';
+ if(v==='rel'){setVB(viewRel());relIntro();syncSheet();try{history.replaceState(null,'','#beziehungen')}catch(e){}}else if(!quiet)go(cur)}
+function syncSheet(){document.getElementById('sheetBtn').setAttribute('aria-pressed',!document.body.classList.contains('min'))}
+/* ---------- wiring ---------- */
+document.getElementById('legend').innerHTML=Object.values(GROUPS).map(([n,c])=>`<span><i style="background:${c}"></i>${n}</span>`).join('');
+document.getElementById('vMap').onclick=()=>setView('map');document.getElementById('vRel').onclick=()=>setView('rel');
 document.getElementById('home').onclick=()=>go('c');document.getElementById('prev').onclick=()=>step(-1);document.getElementById('next').onclick=()=>step(1);
-document.getElementById('close').onclick=()=>document.body.classList.toggle('collapsed');
-if(PRESENTER){const t=document.getElementById('tNotes');t.style.display='';t.classList.toggle('on',showNotes);t.onclick=()=>{showNotes=!showNotes;t.classList.toggle('on',showNotes);if(view==='map')go(cur,true)}}
-svg.addEventListener('click',()=>{if(view==='map'&&cur!=='c'){const b=cur.split('-')[0];go(cur.includes('-')?b:'c')}});
-addEventListener('keydown',e=>{if(e.target.tagName==='BUTTON'&&(e.key===' '||e.key==='Enter'))return;
- if(e.key==='ArrowRight'||e.key==='PageDown'){e.preventDefault();step(1)}else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();step(-1)}else if(e.key==='Escape')go('c');
- else if((e.key==='Enter'||e.key===' ')&&e.target.classList&&e.target.classList.contains('node')){e.preventDefault();e.target.dispatchEvent(new MouseEvent('click',{bubbles:false}))}});
-function fromHash(){const h=(location.hash||'').slice(1);if(h==='beziehungen')setView('rel');else if(h&&(h==='c'||SEQ.includes(h)))go(h,true);else go('c',true)}
+document.getElementById('sheetBtn').onclick=()=>{document.body.classList.toggle('min');syncSheet();setTimeout(refit,60)};
+if(PRESENTER){const nb=document.getElementById('notesBtn');nb.hidden=false;nb.onclick=()=>{notesOn=!notesOn;nb.setAttribute('aria-pressed',notesOn);if(view==='map')go(cur,{noHash:true,instant:true})}}
+svg.addEventListener('click',()=>{if(view==='map'&&cur!=='c')go(cur.includes('-')?cur.split('-')[0]:'c')});
+addEventListener('keydown',e=>{const t=e.target;if(t.tagName==='BUTTON'&&(e.key===' '||e.key==='Enter'))return;
+ if(t.classList&&t.classList.contains('node')&&(e.key==='Enter'||e.key===' ')){e.preventDefault();t.dispatchEvent(new MouseEvent('click'));return}
+ if(e.key==='ArrowRight'||e.key==='PageDown'){e.preventDefault();step(1)}else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();step(-1)}else if(e.key==='Escape')go('c')});
+let lastMode='';function refit(){if(!B)return;const sr=document.getElementById('stage').getBoundingClientRect(),ar=sr.width/Math.max(1,sr.height),key=(sr.width<640)+'|'+(ar<0.95)+'|'+Math.round(ar*4);if(key!==lastMode){lastMode=key;build();if(view==='rel'){setView('rel',true);setVB(viewRel(),true);return}go(cur,{noHash:true,instant:true,open:!document.body.classList.contains('min')});return}if(view==='rel')setVB(viewRel(),true);else setVB(focusB===null?viewOverview():viewBranch(focusB),true)}
+function fromHash(){const h=(location.hash||'').slice(1);if(h==='beziehungen')setView('rel');else go(SEQ.includes(h)?h:'c',{noHash:true,instant:true,open:innerWidth>=860||!!h})}
+/* ---------- self-check (only with ?pruefen) ---------- */
+function audit(){const out={viewport:[innerWidth,innerHeight],issues:[],minFontPx:{}};const r=svg.getBoundingClientRect();
+ const scale=()=>r.width/vb[2];
+ const inside=(b)=>b.x>=vb[0]-1&&b.y>=vb[1]-1&&b.x+b.w<=vb[0]+vb[2]+1&&b.y+b.h<=vb[1]+vb[3]+1;
+ const check=(name,boxes)=>{boxes.forEach((a,i)=>{if(!inside(a.b))out.issues.push(name+': '+a.n+' ragt aus dem Bild');boxes.forEach((c,j)=>{if(j>i&&intersects(a.b,c.b,0))out.issues.push(name+': '+a.n+' überlappt '+c.n)})})};
+ const textFit=(name,g,box)=>{g.querySelectorAll('text').forEach(t=>{const bb=t.getBBox();if(bb.x<box.x+2||bb.x+bb.width>box.x+box.w-2||bb.y<box.y+1||bb.y+bb.height>box.y+box.h-1)out.issues.push(name+': Text „'+t.textContent+'“ passt nicht in seinen Kasten')})};
+ applyFocus(null,null,true);check('Übersicht',[{n:'Mitte',b:centerG._box},...B.map(b=>({n:'Ast '+(b.k+1),b:b.box}))]);out.minFontPx['Übersicht']=+((MODE.compact?28:22)*scale()).toFixed(1);
+ B.forEach(b=>textFit('Ast '+(b.k+1),b.gNode,b.box));
+ B.forEach((b,bi)=>{applyFocus(bi,null,true);const bx=[{n:'Ast '+(b.k+1),b:b.box},...b.lk.map(k=>({n:'„'+k.t+'“',b:k.g._box}))];
+  check('Ast '+(b.k+1),bx);b.lk.forEach(k=>textFit('Ast '+(b.k+1),k.g,k.g._box));out.minFontPx['Ast '+(b.k+1)]=+((MODE.compact?22:18)*scale()).toFixed(1)});
+ setView('rel',true);setVB(viewRel(),true);const N=relLayer._N;check('Beziehungen',[...Object.values(N).map(o=>({n:o.n[1],b:{x:o.x-o.w/2,y:o.y-o.h/2,w:o.w,h:o.h}})),...relLayer._labels.map((l,i)=>({n:'Kantenlabel '+(i+1)+' ('+D.rel.edges[i][2]+')',b:l}))]);
+ out.minFontPx['Beziehungen']=+(18*scale()).toFixed(1);
+ document.getElementById('audit').textContent=JSON.stringify(out);document.getElementById('audit').hidden=false;document.title='AUDIT';setView('map',true);applyFocus(null,null,true)}
+if(document.fonts)document.fonts.addEventListener('loadingdone',()=>{if(B){lastMode='';refit()}});
+let rT;new ResizeObserver(()=>{clearTimeout(rT);rT=setTimeout(refit,40)}).observe(svg);
 addEventListener('hashchange',fromHash);
-new ResizeObserver(()=>{if(view==='rel')setVB(bbox(D.rel.nodes.map(n=>[n[4],n[5]]),190));else go(cur,true)}).observe(svg);
-svg.setAttribute('viewBox',vb.join(' '));fromHash();
+const fontsReady=document.fonts?Promise.all(['600 22px "Schibsted Grotesk"','500 18px "Schibsted Grotesk"','700 15px "Schibsted Grotesk"','400 15px "Schibsted Grotesk"','600 30px Literata','italic 400 15px Literata','400 16px Literata'].map(f=>document.fonts.load(f).catch(()=>{}))).then(()=>document.fonts.ready):Promise.resolve();
+const failsafe=new Promise(r=>setTimeout(r,2500));
+Promise.race([fontsReady,failsafe]).then(()=>{build();{const sr=document.getElementById('stage').getBoundingClientRect(),ar=sr.width/Math.max(1,sr.height);lastMode=(sr.width<640)+'|'+(ar<0.95)+'|'+Math.round(ar*4)}fromHash();syncSheet();if(location.search.includes('ohnetext')){document.body.classList.add('min');build();go(cur,{noHash:true,instant:true,open:false})}if(location.search.includes('pruefen'))audit()});
 </script>
 </body>
 </html>
