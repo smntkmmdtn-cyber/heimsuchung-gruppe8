@@ -157,7 +157,7 @@ body.min #panel{display:none}
   <button class="ib" id="home" title="Zur Übersicht" aria-label="Zur Übersicht"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M2.5 7.2 8 2.5l5.5 4.7V13a.5.5 0 0 1-.5.5H9.6V9.8H6.4v3.7H3a.5.5 0 0 1-.5-.5z"/></svg></button>
   <button class="ib" id="prev" aria-label="Zurück"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 3 5 8l5 5"/></svg></button>
   <button class="ib" id="next" aria-label="Weiter"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 3 5 5-5 5"/></svg></button>
-  <button class="ib" id="notesBtn" aria-pressed="true" hidden>Notizen</button>
+  <button class="ib" id="timerBtn" hidden title="Stoppuhr starten oder anhalten" style="font-variant-numeric:tabular-nums;min-width:62px">0:00</button><button class="ib" id="notesBtn" aria-pressed="true" hidden>Notizen</button>
   <button class="ib" id="sheetBtn" aria-pressed="false">Text</button>
  </div>
 </header>
@@ -232,8 +232,8 @@ function build(){
  for(let k=1;k<=11;k++){const pts=[];for(let i=0;i<=72;i++){const a=i/72*Math.PI*2,rr=1+0.06*Math.sin(3*a+k*.7)+0.04*Math.sin(5*a+k*1.3)+0.025*Math.sin(8*a+k);pts.push([(cw/2+k*95)*rr*Math.cos(a)*1.18,(ch/2+k*72)*rr*Math.sin(a)])}
   el('path',{d:'M'+pts.map(p=>p[0].toFixed(1)+' '+p[1].toFixed(1)).join(' L')+'Z',fill:'none',stroke:'#13263A','stroke-opacity':k%4===0?.11:.06,'stroke-width':k%4===0?1.6:1.1},gTopo)}
  /* branches: measure */
- B=D.branches.map((b,k)=>{const g=GOF[k],c=GROUPS[g][1];const tl=wrapW(b.title,F.br,cs?210:230),ql=cs?[]:wrapW(b.short,F.q,230);
-  const w=Math.max(...tl.map(s=>tw(s,F.br)),...ql.map(s=>tw(s,F.q)))+(cs?16+56+18:16+46+16)+24, h=Math.max(16+tl.length*BRL+(ql.length?4+ql.length*20:0)+14,(cs?56:46)+32);return {...b,k,g,c,tl,ql,w,h,BRL,ic:BICON[k]}});
+ B=D.branches.map((b,k)=>{const g=b.grp||GOF[k],c=GROUPS[g][1];const tl=wrapW(b.title,F.br,cs?210:230),ql=cs?[]:wrapW(b.short,F.q,230);
+  const w=Math.max(...tl.map(s=>tw(s,F.br)),...ql.map(s=>tw(s,F.q)))+(cs?16+56+18:16+46+16)+24, h=Math.max(16+tl.length*BRL+(ql.length?4+ql.length*20:0)+14,(cs?56:46)+32);return {...b,k,g,c,tl,ql,w,h,BRL,ic:b.ic||BICON[k]}});
  /* place on ellipse, grow until no overlap */
  let RY=250,RX=RY*Math.max(.8,Math.min(1.75,ar*1.05));
  for(let it=0;it<40;it++){B.forEach(b=>{const a=(-90+b.k*360/B.length)*Math.PI/180;b.a=a;b.x=RX*Math.cos(a);b.y=RY*Math.sin(a);b.box={x:b.x-b.w/2,y:b.y-b.h/2,w:b.w,h:b.h}});
@@ -327,14 +327,14 @@ function step(d){if(view==='rel')return;if(view==='tl'){showTL(tlSel+d);return}c
 const P=t=>(t.startsWith('• ')?null:t);
 function paras(arr,c){let h='',ul=[];const flush=()=>{if(ul.length){h+=`<ul class="dots" style="--c:${c}">${ul.map(x=>`<li>${x}</li>`).join('')}</ul>`;ul=[]}};
  arr.forEach(t=>{if(t.startsWith('• '))ul.push(t.slice(2));else{flush();h+=`<p>${t}</p>`}});flush();return h}
-function notesBlk(n){if(!PRESENTER||!notesOn||!n)return'';return `<div class="blk notes"><p class="lbl">Sprechnotiz</p><ul>${n.map(([k,v])=>`<li><b>${esc(k)}</b> – ${esc(v)}</li>`).join('')}</ul></div>`}
+function notesBlk(n){if(!PRESENTER||!notesOn||!n)return'';return `<div class="blk notes"><p class="lbl">Sprechnotiz</p><ul>${n.map(([k,v])=>`<li><b>${esc(k)}</b>${v?' – '+esc(v):''}</li>`).join('')}</ul></div>`}
 function label(id){if(id==='c')return['Start','Übersicht'];const [b,k]=id.split('-');const br=D.branches.find(x=>x.id===b),n=D.branches.indexOf(br)+1;return k===undefined?['Ast '+n,br.title]:['Ast '+n,br.kids[+k].t]}
 function pnav(){const i=SEQ.indexOf(cur);let h='<div class="pnav">';if(i>0){const [a,b]=label(SEQ[i-1]);h+=`<button onclick="step(-1)"><small>Zurück zu ${esc(a)}</small>${esc(b)}</button>`}
  if(i<SEQ.length-1){const [a,b]=label(SEQ[i+1]);h+=`<button class="nx" onclick="step(1)"><small>Weiter zu ${esc(a)}</small>${esc(b)}</button>`}return h+'</div>'}
-const FOOT=`<p class="foot">Deutsch-Grundkurs Q2, Gruppe 8. Zitate nach der Kursausgabe, in der alten Rechtschreibung des Originals.</p>`;
+const FOOT=`<p class="foot">Deutsch-Grundkurs Q2, Gruppe 8. Zitate nach der Kursausgabe, in der alten Rechtschreibung des Originals. Belege mit Kapitel und Zitatanfang, ohne Seitenzahlen. <a href="kurz.html" style="color:inherit">Zur Kurzfassung</a></p>`;
 function renderCenter(){const c=D.center;
  pi.innerHTML=`<p class="crumb" style="color:var(--lake)">Kapitel und Epilog</p><h2>${esc(c.title)}</h2>${paras(c.text,'#2D6A88')}${notesBlk(c.notes)}
- <p class="lbl" style="margin-top:20px">Die acht Äste, in der Reihenfolge unseres Vortrags</p>
+ <p class="lbl" style="margin-top:20px">Die ${B.length} Äste, in der Reihenfolge unseres Vortrags</p>
  <div class="branches">${B.map(b=>`<button class="brb" style="--c:${b.c}" onclick="go('${b.id}')"><em>${iconHTML(b.ic,b.c,22,1.7)}<b>${b.k+1}</b></em><span>${esc(b.title)}<small>${esc(b.short)}</small></span></button>`).join('')}</div>
  <p style="font-size:14.5px;color:var(--ink2)">Im „Zeitstrahl“ siehst du die Ereignisse in ihrer Reihenfolge, unter „Beziehungen“ die Figuren.</p>${pnav()}${FOOT}`}
 function crumb(b){return `<div class="phead" style="--c:${b.c}"><span class="ptile">${iconHTML(b.ic,b.c,30,1.6)}</span><p class="crumb" style="color:${b.c}">Ast ${b.k+1}: ${esc(b.title)} <span class="pill">${esc(b.task)}</span></p></div>`}
@@ -375,7 +375,11 @@ document.getElementById('legend').innerHTML=Object.values(GROUPS).map(([n,c])=>`
 document.getElementById('vMap').onclick=()=>setView('map');document.getElementById('vTl').onclick=()=>setView('tl');document.getElementById('vRel').onclick=()=>setView('rel');
 document.getElementById('home').onclick=()=>go('c');document.getElementById('prev').onclick=()=>step(-1);document.getElementById('next').onclick=()=>step(1);
 document.getElementById('sheetBtn').onclick=()=>{document.body.classList.toggle('min');syncSheet();setTimeout(refit,60)};
-if(PRESENTER){const nb=document.getElementById('notesBtn');nb.hidden=false;nb.onclick=()=>{notesOn=!notesOn;nb.setAttribute('aria-pressed',notesOn);if(view==='map')go(cur,{noHash:true,instant:true})}}
+if(PRESENTER){const tb=document.getElementById('timerBtn');tb.hidden=false;let t0=null,acc=0,iv=null;const LIM=0;
+ const draw=()=>{const sec=Math.floor((acc+(t0?Date.now()-t0:0))/1000);tb.textContent=Math.floor(sec/60)+':'+String(sec%60).padStart(2,'0');tb.style.background=LIM&&sec>LIM?'#A3262E':(LIM&&sec>LIM-30?'#8A6A2F':'');tb.style.color=LIM&&sec>LIM-30?'#fff':''};
+ tb.onclick=()=>{if(t0){acc+=Date.now()-t0;t0=null;clearInterval(iv);tb.setAttribute('aria-pressed','false')}else{t0=Date.now();iv=setInterval(draw,250);tb.setAttribute('aria-pressed','true')}draw()};
+ tb.ondblclick=()=>{t0=null;acc=0;clearInterval(iv);tb.setAttribute('aria-pressed','false');draw()};
+ const nb=document.getElementById('notesBtn');nb.hidden=false;nb.onclick=()=>{notesOn=!notesOn;nb.setAttribute('aria-pressed',notesOn);if(view==='map')go(cur,{noHash:true,instant:true})}}
 svg.addEventListener('click',()=>{if(view==='map'&&cur!=='c')go(cur.includes('-')?cur.split('-')[0]:'c')});
 addEventListener('keydown',e=>{const t=e.target;if(t.tagName==='BUTTON'&&(e.key===' '||e.key==='Enter'))return;
  if(t.classList&&t.classList.contains('node')&&(e.key==='Enter'||e.key===' ')){e.preventDefault();t.dispatchEvent(new MouseEvent('click'));return}
